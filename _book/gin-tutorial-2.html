@@ -1,0 +1,977 @@
+
+<!DOCTYPE HTML>
+<html lang="" >
+    <head>
+        <meta charset="UTF-8">
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <title>2.数据库与Models实现 · GitBook</title>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="description" content="">
+        <meta name="generator" content="GitBook 3.2.3">
+        
+        
+        
+    
+    <link rel="stylesheet" href="gitbook/style.css">
+
+    
+            
+                
+                <link rel="stylesheet" href="gitbook/gitbook-plugin-highlight/website.css">
+                
+            
+                
+                <link rel="stylesheet" href="gitbook/gitbook-plugin-search/search.css">
+                
+            
+                
+                <link rel="stylesheet" href="gitbook/gitbook-plugin-fontsettings/website.css">
+                
+            
+        
+
+    
+
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+
+        
+    
+    
+    <meta name="HandheldFriendly" content="true"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="gitbook/images/apple-touch-icon-precomposed-152.png">
+    <link rel="shortcut icon" href="gitbook/images/favicon.ico" type="image/x-icon">
+
+    
+    <link rel="next" href="gin-tutorial-3.html" />
+    
+    
+    <link rel="prev" href="gin-tutorial-1.html" />
+    
+
+    </head>
+    <body>
+        
+<div class="book">
+    <div class="book-summary">
+        
+            
+<div id="book-search-input" role="search">
+    <input type="text" placeholder="Type to search" />
+</div>
+
+            
+                <nav role="navigation">
+                
+
+
+<ul class="summary">
+    
+    
+
+    
+
+    
+        
+        
+    
+        <li class="chapter " data-level="1.1" data-path="./">
+            
+                <a href="./">
+            
+                    
+                    Introduction
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2" data-path="introduction.html">
+            
+                <a href="introduction.html">
+            
+                    
+                    0.项目简介
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3" data-path="gin-tutorial-1.html">
+            
+                <a href="gin-tutorial-1.html">
+            
+                    
+                    1.结构及配置
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter active" data-level="1.4" data-path="gin-tutorial-2.html">
+            
+                <a href="gin-tutorial-2.html">
+            
+                    
+                    2.数据库与Models实现
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5" data-path="gin-tutorial-3.html">
+            
+                <a href="gin-tutorial-3.html">
+            
+                    
+                    3.引入Redis
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6" data-path="gin-tutorial-4.html">
+            
+                <a href="gin-tutorial-4.html">
+            
+                    
+                    4.中间件与API开发-1
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7" data-path="gin-tutorial-5.html">
+            
+                <a href="gin-tutorial-5.html">
+            
+                    
+                    5.中间件与API开发-2
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8" data-path="gin-tutorial-6.html">
+            
+                <a href="gin-tutorial-6.html">
+            
+                    
+                    6.集成Elasticsearch
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9" data-path="gin-tutorial-7.html">
+            
+                <a href="gin-tutorial-7.html">
+            
+                    
+                    7.第三方日志库——zap
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.10" data-path="gin-tutorial-8.html">
+            
+                <a href="gin-tutorial-8.html">
+            
+                    
+                    8.接入swagger
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.11" data-path="gin-tutorial-9.html">
+            
+                <a href="gin-tutorial-9.html">
+            
+                    
+                    9.https与nginx设置
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.12" data-path="gin-tutorial-10.html">
+            
+                <a href="gin-tutorial-10.html">
+            
+                    
+                    10.使用Docker部署
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.13" data-path="ending.html">
+            
+                <a href="ending.html">
+            
+                    
+                    11.Future work
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+
+    <li class="divider"></li>
+
+    <li>
+        <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
+            Published with GitBook
+        </a>
+    </li>
+</ul>
+
+
+                </nav>
+            
+        
+    </div>
+
+    <div class="book-body">
+        
+            <div class="body-inner">
+                
+                    
+
+<div class="book-header" role="navigation">
+    
+
+    <!-- Title -->
+    <h1>
+        <i class="fa fa-circle-o-notch fa-spin"></i>
+        <a href="." >2.数据库与Models实现</a>
+    </h1>
+</div>
+
+
+
+
+                    <div class="page-wrapper" tabindex="-1" role="main">
+                        <div class="page-inner">
+                            
+<div id="book-search-results">
+    <div class="search-noresults">
+    
+                                <section class="normal markdown-section">
+                                
+                                <h2 id="overview">Overview</h2>
+<p>&#x5728;&#x4E0A;&#x4E00;&#x7BC7;&#x6559;&#x7A0B;<a href="https://marcoma.xyz/2019/02/23/gin-tutorial-1/" target="_blank">&#x300A;[Gin&#x6559;&#x7A0B;-1]photo gallery&#x9879;&#x76EE;&#x300B;</a>&#x91CC;&#xFF0C;&#x6211;&#x4EEC;&#x5DF2;&#x7ECF;&#x5B8C;&#x6210;&#x4E86;&#xFF1A;</p>
+<ul>
+<li>&#x914D;&#x7F6E;&#x6587;&#x4EF6; &amp; &#x914D;&#x7F6E;&#x89E3;&#x6790;</li>
+<li>&#x5E38;&#x91CF;&#x5B9A;&#x4E49;</li>
+<li><code>JWT</code>&#x7684;&#x5B9E;&#x73B0;</li>
+</ul>
+<p>&#x672C;&#x7BC7;&#x5C06;&#x8981;&#x5F00;&#x59CB;&#x771F;&#x6B63;&#x7684;&#x201C;&#x4E1A;&#x52A1;&#x5F00;&#x53D1;&#x201D;&#xFF0C;&#x8BB2;&#x8BB2;&#x6570;&#x636E;&#x5E93;&#x8868;&#x7684;&#x5B9A;&#x4E49;&#x548C;&#x5BF9;&#x5E94;model&#x7684;&#x5B9E;&#x73B0;&#x3002;</p>
+<h2 id="&#x7EC4;&#x4EF6;&#x6280;&#x672F;">&#x7EC4;&#x4EF6;&amp;&#x6280;&#x672F;</h2>
+<p>&#x6570;&#x636E;&#x5E93;&#x6211;&#x4EEC;&#x7528;&#x7684;&#x662F;<code>MySQL 5.7</code>&#xFF0C;ORM&#x6846;&#x67B6;&#x7528;&#x7684;&#x662F;<code>gorm</code>&#x3002;</p>
+<p>&#x4E3A;&#x4EC0;&#x4E48;&#x6211;&#x4EEC;&#x7528;<code>MySQL</code>&#x5462;&#xFF1F;&#x5176;&#x5B9E;&#x771F;&#x6B63;&#x8981;&#x7528;&#x7684;&#x662F;&#x201C;&#x5173;&#x7CFB;&#x578B;&#x6570;&#x636E;&#x5E93;&#x201D;&#xFF0C;&#x56E0;&#x4E3A;&#x6211;&#x4EEC;&#x7684;&#x4E1A;&#x52A1;&#x975E;&#x5E38;&#x9002;&#x5408;&#x7528;&#x5173;&#x7CFB;&#x578B;&#x6570;&#x636E;&#x5E93;&#x6765;&#x5B9E;&#x73B0;&#x3002;&#x7C97;&#x7565;&#x60F3;&#x4E00;&#x60F3;&#xFF0C;&#x6211;&#x4EEC;&#x505A;&#x7684;&#x662F;&#x56FE;&#x7247;&#x5B58;&#x50A8;&#x5E93;&#xFF0C;&#x5927;&#x6982;&#x8981;&#x5B58;&#x8FD9;&#x4E48;&#x4E9B;&#x4E1C;&#x897F;&#xFF1A;</p>
+<ul>
+<li>&#x7528;&#x6237;&#x4FE1;&#x606F;</li>
+<li>&#x56FE;&#x7247;&#x6240;&#x5C5E;&#x7684;bucket&#x6570;&#x636E;</li>
+<li>&#x56FE;&#x7247;&#x672C;&#x8EAB;&#x7684;&#x6570;&#x636E;</li>
+<li>......</li>
+</ul>
+<p>&#x4E0D;&#x96BE;&#x60F3;&#x5230;&#xFF0C;&#x5728;&#x4E1A;&#x52A1;&#x903B;&#x8F91;&#x5C42;&#x9762;&#xFF0C;<strong>&#x4E00;&#x4E2A;&#x7528;&#x6237;&#x53EF;&#x4EE5;&#x521B;&#x5EFA;&#x591A;&#x4E2A;bucket&#xFF0C;&#x4E00;&#x4E2A;bucket&#x91CC;&#x53EF;&#x4EE5;&#x5B58;&#x591A;&#x5F20;&#x56FE;&#x7247;&#xFF0C;&#x8FD9;&#x5C31;&#x5F62;&#x6210;&#x4E86;&#x201C;&#x5173;&#x7CFB;&#x201D;&#xFF0C;&#x6240;&#x4EE5;&#x7528;&#x5173;&#x7CFB;&#x578B;&#x6570;&#x636E;&#x5E93;&#x662F;&#x6CA1;&#x9519;&#x7684;&#x3002;</strong>&#x4E0D;&#x8FC7;&#xFF0C;&#x672C;&#x9879;&#x76EE;&#x7528;&#x7684;&#x662F;<code>MySQL</code>&#xFF0C;&#x7528;&#x522B;&#x7684;&#x5173;&#x7CFB;&#x578B;&#x6570;&#x636E;&#x5E93;&#x5982;<code>MariaDB</code>&#x3001;<code>PostgreSQL</code>&#x3001;<code>Microsoft Sql Server</code>&#x4E5F;&#x5E76;&#x65E0;&#x592A;&#x5927;&#x5DEE;&#x522B;&#x3002;&#xFF08;&#x5B83;&#x4EEC;&#x672C;&#x8EAB;&#x7684;&#x5DEE;&#x522B;&#x8FD8;&#x662F;&#x4E0D;&#x5C0F;&#x7684;&#xFF0C;&#x4F46;&#x662F;&#x5728;&#x672C;&#x9879;&#x76EE;&#x7684;&#x4E1A;&#x52A1;&#x5C42;&#x9762;&#x6CA1;&#x4EC0;&#x4E48;&#x5DEE;&#x522B;&#xFF09;</p>
+<p>&#x81F3;&#x4E8E;&#x4E3A;&#x4EC0;&#x4E48;&#x8981;&#x7528;<code>gorm</code>&#x5462;&#xFF1F;&#x5176;&#x5B9E;Golang&#x7684;ORM&#x6846;&#x67B6;&#x8FD8;&#x662F;&#x6709;&#x4E0D;&#x5C11;&#x7684;&#xFF0C;&#x5177;&#x4F53;ORM&#x6846;&#x67B6;&#x4E4B;&#x95F4;&#x7684;&#x5BF9;&#x6BD4;&#x6587;&#x7AE0;&#x4E5F;&#x6709;&#x5F88;&#x591A;&#xFF0C;&#x672C;&#x9879;&#x76EE;&#x9009;&#x62E9;<code>gorm</code>&#x4E00;&#x662F;&#x56E0;&#x4E3A;<code>EDDYCJY</code>&#x7684;&#x6559;&#x7A0B;&#x4E2D;&#x662F;&#x7528;&#x7684;<code>gorm</code>&#xFF0C;&#x4E8C;&#x662F;&#x81EA;&#x5DF1;&#x4E00;&#x8DEF;&#x7528;&#x4E0B;&#x6765;&#x786E;&#x5B9E;&#x89C9;&#x5F97;&#x8FD8;&#x4E0D;&#x9519;&#xFF0C;&#x6240;&#x4EE5;&#x5C31;&#x7EE7;&#x7EED;&#x6CBF;&#x7528;<code>gorm</code>&#x4E86;&#x3002;&#x5982;&#x679C;&#x8BFB;&#x8005;&#x6709;&#x522B;&#x7684;&#x7528;&#x4E60;&#x60EF;&#x4E86;&#x7684;ORM&#x6846;&#x67B6;&#xFF0C;&#x4F8B;&#x5982;<code>beego orm</code>&#x6216;&#x8005;<code>xorm</code>&#xFF0C;&#x4E5F;&#x53EF;&#x4EE5;&#x81EA;&#x884C;&#x66FF;&#x6362;&#xFF0C;&#x5E94;&#x8BE5;&#x4E0D;&#x4F1A;&#x51FA;&#x4EC0;&#x4E48;&#x95EE;&#x9898;&#x3002;</p>
+<h2 id="&#x6570;&#x636E;&#x5E93;">&#x6570;&#x636E;&#x5E93;</h2>
+<ol>
+<li><p>E-R&#x56FE;&#x5B9A;&#x4E49;</p>
+<p> E-R&#x56FE;&#xFF0C;&#x5C31;&#x662F;&#x5B9E;&#x4F53;&#x5173;&#x7CFB;&#x56FE;&#x3002;&#x4E3A;&#x4EC0;&#x4E48;&#x8981;&#x5728;&#x5B9A;&#x4E49;&#x6570;&#x636E;&#x5E93;&#x8868;&#x4E4B;&#x524D;&#x5148;&#x753B;&#x597D;E-R&#x56FE;&#x5462;&#xFF1F;&#x4E00;&#x662F;&#x4E3A;&#x4E86;&#x5E2E;&#x81EA;&#x5DF1;&#x7406;&#x6E05;&#x695A;&#x5404;&#x4E2A;&#x5B9E;&#x4F53;&#x4E4B;&#x95F4;&#x7684;&#x5173;&#x7CFB;&#xFF0C;&#x4E8C;&#x662F;&#x4E3A;&#x4E86;&#x89C4;&#x8303;&#x5F00;&#x53D1;&#x6D41;&#x7A0B;&#xFF0C;&#x4EE5;&#x540E;&#x6709;&#x636E;&#x53EF;&#x5FAA;&#x3002;&#x5982;&#x679C;&#x662F;&#x56E2;&#x961F;&#x5408;&#x4F5C;&#xFF0C;&#x5B9A;&#x4E49;&#x6570;&#x636E;&#x5E93;&#x8868;&#x4E4B;&#x524D;&#x4E0D;&#x753B;&#x597D;E-R&#x56FE;&#xFF0C;&#x4E4B;&#x540E;&#x5728;&#x5F00;&#x53D1;&#x8FC7;&#x7A0B;&#x4E2D;&#x5F88;&#x53EF;&#x80FD;&#x51FA;&#x4E00;&#x5927;&#x5806;&#x5E7A;&#x86FE;&#x5B50;&#x3002;</p>
+<p> &#x57FA;&#x4E8E;&#x6211;&#x4EEC;&#x5BF9;&#x201C;&#x56FE;&#x7247;&#x5B58;&#x50A8;&#x5E93;&#x201D;&#x7684;&#x4E1A;&#x52A1;&#x63CF;&#x8FF0;&#xFF0C;&#x7CFB;&#x7EDF;&#x91CC;&#x7684;&#x5B9E;&#x4F53;&#x76EE;&#x524D;&#x5C31;&#x662F;3&#x4E2A;&#xFF1A;</p>
+<ul>
+<li>&#x7528;&#x6237;&#xFF0C;&#x4E00;&#x4E2A;&#x7528;&#x6237;&#x53EF;&#x4EE5;&#x6709;&#x591A;&#x4E2A;bucket</li>
+<li>bucket&#xFF0C;&#x4E00;&#x4E2A;bucket&#x53EF;&#x4EE5;&#x5B58;&#x591A;&#x5F20;&#x56FE;&#x7247;</li>
+<li><p>&#x56FE;&#x7247;&#xFF0C;&#x4E00;&#x5F20;&#x56FE;&#x7247;&#x53EA;&#x80FD;&#x5C5E;&#x4E8E;&#x4E00;&#x4E2A;&#x7528;&#x6237;</p>
+<p>&#x5BF9;&#x5E94;&#x7684;E-R&#x56FE;&#x5982;&#x4E0B;&#xFF1A;</p>
+<p><img src="https://blog-image-1253224514.cos.ap-guangzhou.myqcloud.com/gin-tutorial-er-diagram.png" alt=""></p>
+</li>
+</ul>
+</li>
+<li><p>&#x6570;&#x636E;&#x5E93;&#x8868;&#x5B9A;&#x4E49;</p>
+<pre><code class="lang-sql"> <span class="hljs-keyword">create</span> <span class="hljs-keyword">database</span> photo_gallery;
+
+ <span class="hljs-keyword">use</span> photo_gallery;
+
+ # &#x7528;&#x6237;&#x8868;
+ <span class="hljs-keyword">drop</span> <span class="hljs-keyword">table</span> <span class="hljs-keyword">if</span> <span class="hljs-keyword">exists</span> auth;
+ <span class="hljs-keyword">create</span> <span class="hljs-keyword">table</span> auth
+ (
+     <span class="hljs-keyword">id</span> <span class="hljs-built_in">int</span> primary <span class="hljs-keyword">key</span> auto_increment,
+     user_name <span class="hljs-built_in">varchar</span>(<span class="hljs-number">16</span>) <span class="hljs-keyword">unique</span> <span class="hljs-keyword">not</span> <span class="hljs-literal">null</span>,
+     <span class="hljs-keyword">password</span> <span class="hljs-built_in">varchar</span>(<span class="hljs-number">255</span>) <span class="hljs-keyword">not</span> <span class="hljs-literal">null</span>,
+     email <span class="hljs-built_in">varchar</span>(<span class="hljs-number">128</span>) <span class="hljs-keyword">not</span> <span class="hljs-literal">null</span>,
+     created_at <span class="hljs-keyword">timestamp</span> <span class="hljs-keyword">default</span> <span class="hljs-keyword">CURRENT_TIMESTAMP</span>,
+     updated_at <span class="hljs-keyword">timestamp</span> <span class="hljs-keyword">default</span> <span class="hljs-keyword">CURRENT_TIMESTAMP</span> <span class="hljs-keyword">ON</span> <span class="hljs-keyword">UPDATE</span> <span class="hljs-keyword">CURRENT_TIMESTAMP</span>
+ );
+
+ # bucket&#x8868;
+ <span class="hljs-keyword">drop</span> <span class="hljs-keyword">table</span> <span class="hljs-keyword">if</span> <span class="hljs-keyword">exists</span> bucket;
+ <span class="hljs-keyword">create</span> <span class="hljs-keyword">table</span> bucket
+ (
+     <span class="hljs-keyword">id</span> <span class="hljs-built_in">int</span> primary <span class="hljs-keyword">key</span> auto_increment,
+     auth_id <span class="hljs-built_in">int</span>,
+     <span class="hljs-keyword">name</span> <span class="hljs-built_in">varchar</span>(<span class="hljs-number">64</span>) <span class="hljs-keyword">not</span> <span class="hljs-literal">null</span>,
+     state tinyint(<span class="hljs-number">1</span>) <span class="hljs-keyword">default</span> <span class="hljs-number">1</span>,
+     <span class="hljs-keyword">size</span> <span class="hljs-built_in">int</span> <span class="hljs-keyword">default</span> <span class="hljs-number">0</span>,
+     description <span class="hljs-built_in">text</span>,
+     created_at <span class="hljs-keyword">timestamp</span> <span class="hljs-keyword">default</span> <span class="hljs-keyword">CURRENT_TIMESTAMP</span>,
+     updated_at <span class="hljs-keyword">timestamp</span> <span class="hljs-keyword">default</span> <span class="hljs-keyword">CURRENT_TIMESTAMP</span> <span class="hljs-keyword">ON</span> <span class="hljs-keyword">UPDATE</span> <span class="hljs-keyword">CURRENT_TIMESTAMP</span>,
+     <span class="hljs-keyword">CONSTRAINT</span> UC_bucket <span class="hljs-keyword">UNIQUE</span>(auth_id, <span class="hljs-keyword">name</span>),
+     <span class="hljs-keyword">INDEX</span> idx_aid_name (auth_id, <span class="hljs-keyword">name</span>)
+ );
+
+ # &#x56FE;&#x7247;&#x8868;
+ <span class="hljs-keyword">drop</span> <span class="hljs-keyword">table</span> <span class="hljs-keyword">if</span> <span class="hljs-keyword">exists</span> photo;
+ <span class="hljs-keyword">create</span> <span class="hljs-keyword">table</span> photo
+ (
+     <span class="hljs-keyword">id</span> <span class="hljs-built_in">int</span> primary <span class="hljs-keyword">key</span> auto_increment,
+     bucket_id <span class="hljs-built_in">int</span>,
+     auth_id <span class="hljs-built_in">int</span>,
+     <span class="hljs-keyword">name</span> <span class="hljs-built_in">varchar</span>(<span class="hljs-number">255</span>) <span class="hljs-keyword">not</span> <span class="hljs-literal">null</span>,
+     tag <span class="hljs-built_in">varchar</span>(<span class="hljs-number">255</span>),
+     <span class="hljs-keyword">url</span> <span class="hljs-built_in">varchar</span>(<span class="hljs-number">255</span>) <span class="hljs-keyword">not</span> <span class="hljs-literal">null</span>,
+     description <span class="hljs-built_in">text</span>,
+     state tinyint(<span class="hljs-number">1</span>) <span class="hljs-keyword">default</span> <span class="hljs-number">1</span>,
+     created_at <span class="hljs-keyword">timestamp</span> <span class="hljs-keyword">default</span> <span class="hljs-keyword">CURRENT_TIMESTAMP</span>,
+     updated_at <span class="hljs-keyword">timestamp</span> <span class="hljs-keyword">default</span> <span class="hljs-keyword">CURRENT_TIMESTAMP</span> <span class="hljs-keyword">ON</span> <span class="hljs-keyword">UPDATE</span> <span class="hljs-keyword">CURRENT_TIMESTAMP</span>,
+     <span class="hljs-keyword">constraint</span> UC_photo <span class="hljs-keyword">UNIQUE</span>(bucket_id, <span class="hljs-keyword">name</span>),
+     <span class="hljs-keyword">INDEX</span> idx_bid_name (bucket_id, <span class="hljs-keyword">name</span>)
+ );
+</code></pre>
+<p> &#x9664;&#x4E86;E-R&#x56FE;&#x91CC;&#x6807;&#x6CE8;&#x7684;&#x5C5E;&#x6027;&#x5916;&#xFF0C;&#x6BCF;&#x4E2A;&#x5B9E;&#x4F53;&#x5BF9;&#x5E94;&#x7684;&#x8868;&#x91CC;&#x90FD;&#x6709;&#x5171;&#x540C;&#x7684;&#x5C5E;&#x6027;&#xFF1A;<code>created_at</code>&#x548C;<code>updated_at</code>&#xFF0C;&#x8FD9;&#x662F;&#x4E3A;&#x4E86;debug&#x7684;&#x65F6;&#x5019;&#x66F4;&#x52A0;&#x65B9;&#x4FBF;&#x5730;&#x770B;&#x5230;&#x6570;&#x636E;&#x4FEE;&#x6539;&#x65F6;&#x95F4;&#xFF0C;&#x4E00;&#x822C;&#x90FD;&#x5EFA;&#x8BAE;&#x5E26;&#x4E0A;&#x8FD9;&#x4E24;&#x4E2A;&#x5B57;&#x6BB5;&#x3002;</p>
+</li>
+<li><p>&#x5B9E;&#x73B0;&#x6570;&#x636E;&#x5E93;&#x8FDE;&#x63A5;</p>
+<p> &#x5B9A;&#x4E49;&#x5B8C;&#x4E86;&#x6570;&#x636E;&#x5E93;&#x8868;&#xFF0C;&#x6211;&#x4EEC;&#x53EF;&#x4EE5;&#x7528;Golang&#x5B9E;&#x73B0;&#x4E00;&#x4E2A;&#x6570;&#x636E;&#x5E93;&#x8FDE;&#x63A5;&#xFF0C;&#x5F00;&#x59CB;&#x548C;&#x6570;&#x636E;&#x5E93;&#x8FDB;&#x884C;&#x4EA4;&#x4E92;&#x3002;&#x5148;&#x5728;&#x9879;&#x76EE;&#x8DEF;&#x5F84;&#x4E0B;&#x65B0;&#x5EFA;<code>models</code>&#x6587;&#x4EF6;&#x5939;&#xFF0C;&#x7136;&#x540E;&#x5728;<code>models</code>&#x4E0B;&#x65B0;&#x5EFA;<code>db.go</code>&#x6587;&#x4EF6;&#x3002;</p>
+<pre><code> gin-photo-storage
+ |&#x2014;&#x2014; conf
+      |&#x2014;&#x2014; server.conf
+      |&#x2014;&#x2014; cfg.go
+ |&#x2014;&#x2014; constant
+     |&#x2014;&#x2014; constant.go
+     |&#x2014;&#x2014; resp_code.go
+ |&#x2014;&#x2014; utils
+     |&#x2014;&#x2014; jwt.go
+ |&#x2014;&#x2014; models
+     |&#x2014;&#x2014; db.go
+</code></pre><p> &#x5728;<code>db.go</code>&#x91CC;&#xFF0C;&#x6211;&#x4EEC;&#x8981;</p>
+<ul>
+<li>&#x8BFB;&#x53D6;&#x6570;&#x636E;&#x5E93;&#x914D;&#x7F6E;&#xFF0C;&#x5982;<code>Host</code>&#x3001;<code>User</code>&#x3001;<code>Password</code>&#x7B49;......</li>
+<li><p>&#x6839;&#x636E;&#x914D;&#x7F6E;&#x5EFA;&#x7ACB;&#x8D77;&#x4E00;&#x4E2A;&#x5168;&#x5C40;&#x7684;&#x8FDE;&#x63A5;&#xFF0C;&#x53EF;&#x4F9B;&#x5176;&#x4ED6;&#x6A21;&#x5757;&#x4F7F;&#x7528;</p>
+<pre><code class="lang-golang"><span class="hljs-keyword">package</span> models
+
+<span class="hljs-keyword">import</span> (
+  <span class="hljs-string">&quot;fmt&quot;</span>
+  <span class="hljs-string">&quot;gin-photo-storage/conf&quot;</span>
+  <span class="hljs-string">&quot;gin-photo-storage/constant&quot;</span>
+  <span class="hljs-string">&quot;gin-photo-storage/utils&quot;</span>
+  _ <span class="hljs-string">&quot;github.com/go-sql-driver/mysql&quot;</span>    <span class="hljs-comment">// remember to import mysql driver</span>
+  <span class="hljs-string">&quot;github.com/jinzhu/gorm&quot;</span>
+  <span class="hljs-string">&quot;log&quot;</span>
+  <span class="hljs-string">&quot;strconv&quot;</span>
+  <span class="hljs-string">&quot;strings&quot;</span>
+  <span class="hljs-string">&quot;time&quot;</span>
+)
+
+<span class="hljs-keyword">var</span> db *gorm.DB
+
+<span class="hljs-comment">// Init the database connection.</span>
+<span class="hljs-keyword">func</span> init() {
+  dbType := conf.ServerCfg.Get(constant.DB_TYPE)
+  dbHost := conf.ServerCfg.Get(constant.DB_HOST)
+  dbPort := conf.ServerCfg.Get(constant.DB_PORT)
+  dbUser := conf.ServerCfg.Get(constant.DB_USER)
+  dbPwd := conf.ServerCfg.Get(constant.DB_PWD)
+  dbName := conf.ServerCfg.Get(constant.DB_NAME)
+
+  <span class="hljs-keyword">var</span> err error
+  db, err = gorm.Open(dbType, fmt.Sprintf(constant.DB_CONNECT, dbUser, dbPwd, dbHost, dbPort, dbName))
+  <span class="hljs-keyword">if</span> err != <span class="hljs-literal">nil</span> {
+      log.Fatalln(<span class="hljs-string">&quot;Fail to connect database!&quot;</span>)
+  }
+
+  db.SingularTable(<span class="hljs-literal">true</span>)
+  <span class="hljs-keyword">if</span> !db.HasTable(&amp;Auth{}) {
+      db.CreateTable(&amp;Auth{})
+  }
+  <span class="hljs-keyword">if</span> !db.HasTable(&amp;Bucket{}) {
+      db.CreateTable(&amp;Bucket{})
+  }
+  <span class="hljs-keyword">if</span> !db.HasTable(&amp;Photo{}) {
+      db.CreateTable(&amp;Photo{})
+  }
+}
+</code></pre>
+<p><strong>&#x26A0;&#xFE0F;Note&#xFF1A;&#x8BB0;&#x5F97;&#x8981;&#x5148;&#x5B89;&#x88C5;mysql&#x7684;Golang&#x9A71;&#x52A8;&#xFF1A;<code>github.com/go-sql-driver/mysql</code></strong>&#x3002;</p>
+</li>
+</ul>
+</li>
+</ol>
+<h2 id="model&#x5B9A;&#x4E49;">Model&#x5B9A;&#x4E49;</h2>
+<p>&#x6709;&#x4E86;&#x6570;&#x636E;&#x5E93;&#x8868;&#x4E4B;&#x540E;&#xFF0C;&#x6BCF;&#x5F20;&#x8868;&#x53EF;&#x4EE5;&#x5BF9;&#x5E94;&#x6765;&#x5B9E;&#x73B0;&#x4E00;&#x4E2A;Model&#xFF0C;&#x5373;<code>Auth</code>&#x3001;<code>Bucket</code>&#x3001;<code>Photo</code>&#x3002;&#x7531;&#x4E8E;&#x591A;&#x4E2A;Model&#x90FD;&#x6709;&#x4E00;&#x4E9B;&#x5171;&#x540C;&#x7684;&#x5C5E;&#x6027;&#x53EF;&#x4EE5;&#x62BD;&#x8C61;&#x51FA;&#x6765;&#xFF0C;&#x5982;<code>id</code>&#x3001;<code>created_at</code>&#x3001;<code>updated_at</code>&#x8FD9;&#x79CD;&#x5927;&#x5BB6;&#x90FD;&#x6709;&#x7684;&#xFF0C;&#x5C31;&#x6CA1;&#x5FC5;&#x8981;&#x91CD;&#x590D;&#x5728;&#x6BCF;&#x4E2A;&#x7ED3;&#x6784;&#x4F53;&#x5185;&#x90FD;&#x5B9A;&#x4E49;&#x4E00;&#x904D;&#x3002;&#x6240;&#x4EE5;&#x6211;&#x4EEC;&#x8981;&#x5B9A;&#x4E49;&#x4E00;&#x4E2A;&#x5305;&#x542B;&#x5171;&#x540C;&#x5C5E;&#x6027;&#x7684;Model&#xFF1A;<code>BaseModel</code>&#x3002;</p>
+<p>&#x5148;&#x5728;<code>models</code>&#x4E0B;&#x65B0;&#x5EFA;<code>auth.go</code>&#x3001;<code>bucket.go</code>&#x3001;<code>photo.go</code>&#x4E09;&#x4E2A;&#x4EE3;&#x7801;&#x6587;&#x4EF6;&#x3002;</p>
+<pre><code>gin-photo-storage
+|&#x2014;&#x2014; conf
+     |&#x2014;&#x2014; server.conf
+     |&#x2014;&#x2014; cfg.go
+|&#x2014;&#x2014; constant
+    |&#x2014;&#x2014; constant.go
+    |&#x2014;&#x2014; resp_code.go
+|&#x2014;&#x2014; utils
+    |&#x2014;&#x2014; jwt.go
+|&#x2014;&#x2014; models
+    |&#x2014;&#x2014; auth.go
+    |&#x2014;&#x2014; bucket.go
+    |&#x2014;&#x2014; db.go 
+    |&#x2014;&#x2014; photo.go
+</code></pre><p>&#x7136;&#x540E;&#x5148;&#x5728;<code>db.go</code>&#x91CC;&#x5B9E;&#x73B0;&#x4E0A;&#x9762;&#x63D0;&#x5230;&#x7684;<code>BaseModel</code>&#xFF0C;&#x4E4B;&#x540E;&#x518D;&#x9010;&#x4E2A;&#x5B9E;&#x73B0;<code>Auth</code>&#x3001;<code>Bucket</code>&#x3001;<code>Photo</code>&#x3002;</p>
+<ol>
+<li><p>BaseModel</p>
+<pre><code class="lang-golang"> <span class="hljs-comment">// &#x5728;db.go&#x91CC;&#x5B9E;&#x73B0;</span>
+ <span class="hljs-comment">// The base model of all models, including ID &amp; CreatedAt &amp; UpdatedAt.</span>
+ <span class="hljs-keyword">type</span> BaseModel <span class="hljs-keyword">struct</span> {
+     ID             <span class="hljs-keyword">uint</span>         <span class="hljs-string">`json:&quot;id&quot; gorm:&quot;primary_key;AUTO_INCREMENT&quot; form:&quot;id&quot;`</span>
+     CreatedAt     time.Time     <span class="hljs-string">`json:&quot;created_at&quot; gorm:&quot;default: CURRENT_TIMESTAMP&quot; form:&quot;created_at&quot;`</span>
+     UpdatedAt     time.Time     <span class="hljs-string">`json:&quot;updated_at&quot; gorm:&quot;default: CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP&quot; form:&quot;updated_at&quot;`</span>
+ }
+</code></pre>
+<p> &#x5176;&#x5B9E;&#xFF0C;<code>gorm</code>&#x7684;&#x5F00;&#x53D1;&#x8005;&#x4E5F;&#x60F3;&#x5230;&#x4E86;&#x8FD9;&#x79CD;&#x62BD;&#x8C61;&#x51FA;&#x5171;&#x540C;&#x5C5E;&#x6027;&#x7684;Model&#xFF0C;&#x6240;&#x4EE5;&#x6846;&#x67B6;&#x91CC;&#x65E9;&#x5DF2;&#x5B9A;&#x4E49;&#x597D;&#x4E86;<code>gorm.Model</code>&#x7ED3;&#x6784;&#x4F53;&#xFF0C;&#x5305;&#x542B;&#x4E86;<code>ID</code>&#x3001;<code>CreatedAt</code>&#x3001;<code>UpdatedAt</code>&#x3001;<code>DeletedAt</code>&#x3002;&#x4F46;&#x662F;&#x5728;&#x8FD9;&#x91CC;&#x6211;&#x4EEC;&#x4E0D;&#x9700;&#x8981;<code>DeletedAt</code>&#x5B57;&#x6BB5;&#xFF0C;&#x6240;&#x4EE5;&#x5C31;&#x6CA1;&#x6709;&#x76F4;&#x63A5;&#x7528;&#x5B83;&#x63D0;&#x4F9B;&#x7684;Model&#xFF0C;&#x800C;&#x662F;&#x81EA;&#x884C;&#x5B9A;&#x4E49;&#x3002;</p>
+</li>
+<li><p>Auth</p>
+<pre><code class="lang-golang"> <span class="hljs-comment">// &#x5728;auth.go&#x91CC;&#x5B9E;&#x73B0;</span>
+ <span class="hljs-keyword">package</span> models
+
+ <span class="hljs-keyword">import</span> (
+     <span class="hljs-string">&quot;crypto/md5&quot;</span>
+     <span class="hljs-string">&quot;fmt&quot;</span>
+     <span class="hljs-string">&quot;github.com/pkg/errors&quot;</span>
+     <span class="hljs-string">&quot;io&quot;</span>
+ )
+
+ <span class="hljs-keyword">type</span> Auth <span class="hljs-keyword">struct</span> {
+     BaseModel
+     UserName     <span class="hljs-keyword">string</span> <span class="hljs-string">`json:&quot;user_name&quot; gorm:&quot;type:varchar(16)&quot;`</span>
+     Password     <span class="hljs-keyword">string</span> <span class="hljs-string">`json:&quot;password&quot; gorm:&quot;type:varchar(16)&quot;`</span>
+     Email         <span class="hljs-keyword">string</span> <span class="hljs-string">`json:&quot;email&quot; gorm:&quot;type:varchar(128)&quot;`</span>
+ }
+
+ <span class="hljs-keyword">var</span> AuthExistsError = errors.New(<span class="hljs-string">&quot;auth already exists&quot;</span>)
+
+ <span class="hljs-comment">// Add a new auth.</span>
+ <span class="hljs-keyword">func</span> AddAuth(username, password, email <span class="hljs-keyword">string</span>) error {
+     trx := db.Begin()
+     <span class="hljs-keyword">defer</span> trx.Commit()
+
+     auth := Auth{}
+     trx.Set(<span class="hljs-string">&quot;gorm:query_option&quot;</span>, <span class="hljs-string">&quot;FOR UPDATE&quot;</span>).
+         Where(<span class="hljs-string">&quot;user_name = ?&quot;</span>, username).
+         First(&amp;auth)
+     <span class="hljs-keyword">if</span> auth.ID &gt; <span class="hljs-number">0</span> {
+         <span class="hljs-keyword">return</span> AuthExistsError
+     }
+
+     hash := md5.New()
+     io.WriteString(hash, password)    <span class="hljs-comment">// for safety, don&apos;t just save the plain text</span>
+     auth.UserName = username
+     auth.Password = fmt.Sprintf(<span class="hljs-string">&quot;%x&quot;</span>, hash.Sum(<span class="hljs-literal">nil</span>))
+     auth.Email = email
+     err := trx.Create(&amp;auth).Error
+     <span class="hljs-keyword">if</span> err != <span class="hljs-literal">nil</span> {
+         <span class="hljs-keyword">return</span> err
+     }
+     <span class="hljs-keyword">return</span> <span class="hljs-literal">nil</span>
+ }
+
+ <span class="hljs-comment">// Check if the auth is valid.</span>
+ <span class="hljs-keyword">func</span> CheckAuth(username, password <span class="hljs-keyword">string</span>) <span class="hljs-keyword">bool</span> {
+     trx := db.Begin()
+     <span class="hljs-keyword">defer</span> trx.Commit()
+
+     hash := md5.New()
+     io.WriteString(hash, password)
+     password = fmt.Sprintf(<span class="hljs-string">&quot;%x&quot;</span>, hash.Sum(<span class="hljs-literal">nil</span>))    <span class="hljs-comment">//    for safety, don&apos;t just save the plain text</span>
+     auth := Auth{}
+     trx.Set(<span class="hljs-string">&quot;gorm:query_option&quot;</span>, <span class="hljs-string">&quot;FOR UPDATE&quot;</span>).
+         Where(<span class="hljs-string">&quot;user_name = ? AND password = ?&quot;</span>, username, password).
+         First(&amp;auth)
+     <span class="hljs-keyword">if</span> auth.ID &gt; <span class="hljs-number">0</span> {
+         <span class="hljs-keyword">return</span> <span class="hljs-literal">true</span>
+     }
+     <span class="hljs-keyword">return</span> <span class="hljs-literal">false</span>
+ }
+</code></pre>
+<p> Auth&#x91CC;&#x9700;&#x8981;&#x6CE8;&#x610F;&#x7684;&#x662F;&#xFF0C;&#x6CE8;&#x518C;&#x65F6;<strong>&#x4E0D;&#x80FD;&#x5B58;&#x660E;&#x6587;&#x5BC6;&#x7801;</strong>&#xFF0C;&#x767B;&#x9646;&#x6821;&#x9A8C;&#x65F6;&#x4E5F;&#x4E0D;&#x80FD;&#x76F4;&#x63A5;&#x7528;&#x660E;&#x6587;&#x6821;&#x9A8C;&#xFF0C;&#x9700;&#x8981;&#x7528;<code>md5</code>&#x52A0;&#x4E00;&#x5C42;&#x58F3;&#xFF0C;&#x8FD9;&#x5728;&#x4E00;&#x5B9A;&#x7A0B;&#x5EA6;&#x4E0A;&#x80FD;&#x9632;&#x6B62;&#x540E;&#x7AEF;&#x6570;&#x636E;&#x5E93;&#x88AB;&#x4E00;&#x9505;&#x7AEF;&#x5BFC;&#x81F4;&#x7684;&#x5BC6;&#x7801;&#x6CC4;&#x9732;&#x3002;</p>
+</li>
+<li><p>Bucket</p>
+<pre><code class="lang-golang"> <span class="hljs-comment">// &#x5728;bucket.go&#x91CC;&#x5B9E;&#x73B0;</span>
+ <span class="hljs-keyword">package</span> models
+
+ <span class="hljs-keyword">import</span> (
+     <span class="hljs-string">&quot;gin-photo-storage/constant&quot;</span>
+     <span class="hljs-string">&quot;github.com/pkg/errors&quot;</span>
+     <span class="hljs-string">&quot;log&quot;</span>
+ )
+
+ <span class="hljs-comment">// The bucket model.</span>
+ <span class="hljs-keyword">type</span> Bucket <span class="hljs-keyword">struct</span> {
+     BaseModel
+     AuthID         <span class="hljs-keyword">uint</span>    <span class="hljs-string">`json:&quot;auth_id&quot; gorm:&quot;type:int&quot; form:&quot;auth_id&quot;`</span>
+     Name         <span class="hljs-keyword">string</span>    <span class="hljs-string">`json:&quot;bucket_name&quot; gorm:&quot;type:varchar(64)&quot; form:&quot;bucket_name&quot;`</span>
+     State         <span class="hljs-keyword">int</span>        <span class="hljs-string">`json:&quot;state&quot; gorm:&quot;type:tinyint(1)&quot; form:&quot;state&quot;`</span>
+     Size         <span class="hljs-keyword">int</span>        <span class="hljs-string">`json:&quot;size&quot; gorm:&quot;type:int&quot; form:&quot;bucket_size&quot;`</span>
+     Description <span class="hljs-keyword">string</span>    <span class="hljs-string">`json:&quot;description&quot; gorm:&quot;type:text&quot; form:&quot;description&quot;`</span>
+ }
+
+ <span class="hljs-keyword">var</span> BucketExistsError = errors.New(<span class="hljs-string">&quot;bucket already exists&quot;</span>)
+ <span class="hljs-keyword">var</span> NoSuchBucketError = errors.New(<span class="hljs-string">&quot;no such bucket&quot;</span>)
+
+ <span class="hljs-comment">// Add a new bucket.</span>
+ <span class="hljs-keyword">func</span> AddBucket(bucketToAdd *Bucket) error {
+     trx := db.Begin()
+     <span class="hljs-keyword">defer</span> trx.Commit()
+
+     <span class="hljs-comment">// check if the bucket exists, select with a WRITE LOCK.</span>
+     bucket := Bucket{}
+     trx.Set(<span class="hljs-string">&quot;gorm:query_option&quot;</span>, <span class="hljs-string">&quot;FOR UPDATE&quot;</span>).
+         Where(<span class="hljs-string">&quot;auth_id = ? AND name = ? AND state = ?&quot;</span>, bucketToAdd.AuthID, bucketToAdd.Name, <span class="hljs-number">1</span>).
+         First(&amp;bucket)
+     <span class="hljs-keyword">if</span> bucket.ID &gt; <span class="hljs-number">0</span> {
+         <span class="hljs-keyword">return</span> BucketExistsError
+     }
+
+     bucket.AuthID = bucketToAdd.AuthID
+     bucket.Name = bucketToAdd.Name
+     bucket.State = <span class="hljs-number">1</span>
+     bucket.Size = <span class="hljs-number">0</span>
+     bucket.Description = bucketToAdd.Description
+     <span class="hljs-keyword">if</span> err := trx.Create(&amp;bucket).Error; err != <span class="hljs-literal">nil</span> {
+         log.Println(err)
+         <span class="hljs-keyword">return</span> err
+     }
+     <span class="hljs-keyword">return</span> <span class="hljs-literal">nil</span>
+ }
+
+ <span class="hljs-comment">// Delete an existed bucket.</span>
+ <span class="hljs-keyword">func</span> DeleteBucket(bucketID <span class="hljs-keyword">uint</span>) error {
+     trx := db.Begin()
+     <span class="hljs-keyword">defer</span> trx.Commit()
+
+     result := trx.Where(<span class="hljs-string">&quot;id = ? and state = ?&quot;</span>, bucketID, <span class="hljs-number">1</span>).Delete(Bucket{})
+     <span class="hljs-keyword">if</span> err := result.Error; err != <span class="hljs-literal">nil</span> {
+         <span class="hljs-keyword">return</span> err
+     }
+     <span class="hljs-keyword">if</span> affected := result.RowsAffected; affected == <span class="hljs-number">0</span> {
+         <span class="hljs-keyword">return</span> NoSuchBucketError
+     }
+     <span class="hljs-keyword">return</span> <span class="hljs-literal">nil</span>
+ }
+
+ <span class="hljs-comment">// Update an existed bucket.</span>
+ <span class="hljs-keyword">func</span> UpdateBucket(bucketToUpdate *Bucket) error {
+     trx := db.Begin()
+     <span class="hljs-keyword">defer</span> trx.Commit()
+
+     bucket := Bucket{}
+     bucket.ID = bucketToUpdate.ID
+     result := trx.Model(&amp;bucket).Updates(*bucketToUpdate)
+     <span class="hljs-keyword">if</span> err := result.Error; err != <span class="hljs-literal">nil</span> {
+         <span class="hljs-keyword">return</span> err
+     }
+     <span class="hljs-keyword">if</span> affected := result.RowsAffected; affected == <span class="hljs-number">0</span> {
+         <span class="hljs-keyword">return</span> NoSuchBucketError
+     }
+     <span class="hljs-keyword">return</span> <span class="hljs-literal">nil</span>
+ }
+
+ <span class="hljs-comment">// Get a bucket by bucket id.</span>
+ <span class="hljs-keyword">func</span> GetBucketByID(bucketID <span class="hljs-keyword">uint</span>) (Bucket, error) {
+     trx := db.Begin()
+     <span class="hljs-keyword">defer</span> trx.Commit()
+
+     bucket := Bucket{}
+     found := NoSuchBucketError
+     trx.Where(<span class="hljs-string">&quot;id = ?&quot;</span>, bucketID).First(&amp;bucket)
+     <span class="hljs-keyword">if</span> bucket.ID &gt; <span class="hljs-number">0</span> {
+         found = <span class="hljs-literal">nil</span>
+     }
+     <span class="hljs-keyword">return</span> bucket, found
+ }
+
+ <span class="hljs-comment">// Get all buckets of the given user.</span>
+ <span class="hljs-keyword">func</span> GetBucketByAuthID(authID <span class="hljs-keyword">uint</span>, offset <span class="hljs-keyword">int</span>) ([]Bucket, error) {
+     trx := db.Begin()
+     <span class="hljs-keyword">defer</span> trx.Commit()
+
+     buckets := <span class="hljs-built_in">make</span>([]Bucket, <span class="hljs-number">0</span>, constant.PAGE_SIZE)
+     err := trx.Where(<span class="hljs-string">&quot;auth_id = ?&quot;</span>, authID).
+         Offset(offset).
+         Limit(constant.PAGE_SIZE).
+         Find(&amp;buckets).Error
+
+     <span class="hljs-keyword">if</span> err != <span class="hljs-literal">nil</span> {
+         log.Println(err)
+         <span class="hljs-keyword">return</span> buckets, err
+     }
+     <span class="hljs-keyword">return</span> buckets, <span class="hljs-literal">nil</span>
+ }
+</code></pre>
+<p> &#x540C;&#x6837;&#x5730;&#xFF0C;&#x5B9A;&#x4E49;&#x4E86;Bucket&#x7ED3;&#x6784;&#x4F53;&#x5916;&#xFF0C;&#x8FD8;&#x5B9A;&#x4E49;&#x4E86;&#x5BF9;&#x5B83;&#x589E;/&#x5220;/&#x6539;/&#x67E5;&#x7684;&#x63A5;&#x53E3;&#x3002;</p>
+</li>
+<li><p>Photo</p>
+<pre><code class="lang-golang"> <span class="hljs-comment">// &#x5728;photo.go&#x91CC;&#x5B9E;&#x73B0;</span>
+ <span class="hljs-keyword">package</span> models
+
+ <span class="hljs-keyword">import</span> (
+     <span class="hljs-string">&quot;bufio&quot;</span>
+     <span class="hljs-string">&quot;gin-photo-storage/constant&quot;</span>
+     <span class="hljs-string">&quot;gin-photo-storage/utils&quot;</span>
+     <span class="hljs-string">&quot;github.com/jinzhu/gorm&quot;</span>
+     <span class="hljs-string">&quot;github.com/pkg/errors&quot;</span>
+     <span class="hljs-string">&quot;log&quot;</span>
+     <span class="hljs-string">&quot;mime/multipart&quot;</span>
+ )
+
+ <span class="hljs-keyword">var</span> NoSuchPhotoError = errors.New(<span class="hljs-string">&quot;no such photo&quot;</span>)
+ <span class="hljs-keyword">var</span> PhotoExistsError = errors.New(<span class="hljs-string">&quot;photo already exists&quot;</span>)
+ <span class="hljs-keyword">var</span> PhotoFileBrokenError = errors.New(<span class="hljs-string">&quot;photo file is broken&quot;</span>)
+
+ <span class="hljs-comment">// The photo model.</span>
+ <span class="hljs-keyword">type</span> Photo <span class="hljs-keyword">struct</span> {
+     BaseModel
+     AuthID         <span class="hljs-keyword">uint</span>        <span class="hljs-string">`json:&quot;auth_id&quot; gorm:&quot;type:int&quot; form:&quot;auth_id&quot;`</span>
+     BucketID     <span class="hljs-keyword">uint</span>        <span class="hljs-string">`json:&quot;bucket_id&quot; gorm:&quot;type:int&quot; form:&quot;bucket_id&quot;`</span>
+     Name         <span class="hljs-keyword">string</span>        <span class="hljs-string">`json:&quot;name&quot; gorm:&quot;type:varchar(255)&quot; form:&quot;name&quot;`</span>
+     Tag         <span class="hljs-keyword">string</span>        <span class="hljs-string">`json:&quot;tag&quot; gorm:&quot;type:varchar(255)&quot; form:&quot;tag&quot;`</span>
+     Tags         []<span class="hljs-keyword">string</span>    <span class="hljs-string">`json:&quot;tags&quot; gorm:&quot;-&quot; form:&quot;tags&quot;`</span>
+     Url         <span class="hljs-keyword">string</span>        <span class="hljs-string">`json:&quot;url&quot; gorm:&quot;type:varchar(255)&quot; form:&quot;url&quot;`</span>
+     Description <span class="hljs-keyword">string</span>        <span class="hljs-string">`json:&quot;description&quot; gorm:&quot;type:text&quot; form:&quot;description&quot;`</span>
+     State         <span class="hljs-keyword">int</span>         <span class="hljs-string">`json:&quot;state&quot; gorm:&quot;type:tinyint(1)&quot; form:&quot;state&quot;`</span>
+ }
+
+ <span class="hljs-comment">// Add a new photo</span>
+ <span class="hljs-keyword">func</span> AddPhoto(photoToAdd *Photo, photoFileHeader *multipart.FileHeader) (*Photo, <span class="hljs-keyword">string</span>, error) {
+     trx := db.Begin()
+     <span class="hljs-keyword">defer</span> trx.Commit()
+
+     <span class="hljs-comment">// check if the photo exists, select with a WRITE LOCK</span>
+     photo := Photo{}
+     trx.Set(<span class="hljs-string">&quot;gorm:query_option&quot;</span>, <span class="hljs-string">&quot;FOR UPDATE&quot;</span>).
+         Where(<span class="hljs-string">&quot;bucket_id = ? AND name = ?&quot;</span>, photoToAdd.BucketID, photoToAdd.Name).
+         First(&amp;photo)
+     <span class="hljs-keyword">if</span> photo.ID &gt; <span class="hljs-number">0</span> {
+         <span class="hljs-keyword">return</span> <span class="hljs-literal">nil</span>, <span class="hljs-string">&quot;&quot;</span>, PhotoExistsError
+     }
+
+     photo.AuthID = photoToAdd.AuthID
+     photo.BucketID = photoToAdd.BucketID
+     photo.Name = photoToAdd.Name
+     photo.Tag = photoToAdd.Tag
+     photo.Description = photoToAdd.Description
+     photo.State = <span class="hljs-number">1</span>
+
+     err := trx.Create(&amp;photo).Error
+     <span class="hljs-keyword">if</span> err != <span class="hljs-literal">nil</span> {
+         log.Println(err)
+         <span class="hljs-keyword">return</span> <span class="hljs-literal">nil</span>, <span class="hljs-string">&quot;&quot;</span>, err
+     }
+
+     err = trx.Model(&amp;Bucket{}).Where(<span class="hljs-string">&quot;id = ?&quot;</span>, photoToAdd.BucketID).
+         Update(<span class="hljs-string">&quot;size&quot;</span>, gorm.Expr(<span class="hljs-string">&quot;size + ?&quot;</span>, <span class="hljs-number">1</span>)).
+         Error
+     <span class="hljs-keyword">if</span> err != <span class="hljs-literal">nil</span> {
+         trx.Rollback()
+         log.Println(err)
+         <span class="hljs-keyword">return</span> <span class="hljs-literal">nil</span>, <span class="hljs-string">&quot;&quot;</span>, err
+     }
+
+     <span class="hljs-comment">// <span class="hljs-doctag">TODO:</span> upload to the tencent cloud COS</span>
+     <span class="hljs-comment">// ......</span>
+ }
+
+ <span class="hljs-comment">// Delete a photo by photo id.</span>
+ <span class="hljs-keyword">func</span> DeletePhotoByID(photoID <span class="hljs-keyword">uint</span>) error {
+     trx := db.Begin()
+     <span class="hljs-keyword">defer</span> trx.Commit()
+
+     result := trx.Where(<span class="hljs-string">&quot;id = ? AND state = ?&quot;</span>, photoID, <span class="hljs-number">1</span>).Delete(Photo{})
+     <span class="hljs-keyword">if</span> err := result.Error; err != <span class="hljs-literal">nil</span> {
+         log.Println(err)
+         <span class="hljs-keyword">return</span> err
+     }
+     <span class="hljs-keyword">if</span> affected := result.RowsAffected; affected == <span class="hljs-number">0</span> {
+         <span class="hljs-keyword">return</span> NoSuchPhotoError
+     }
+     <span class="hljs-keyword">return</span> <span class="hljs-literal">nil</span>
+ }
+
+ <span class="hljs-comment">// Delete a photo by its bucket id &amp; its name.</span>
+ <span class="hljs-keyword">func</span> DeletePhotoByBucketAndName(bucketID <span class="hljs-keyword">uint</span>, name <span class="hljs-keyword">string</span>) error {
+     trx := db.Begin()
+     <span class="hljs-keyword">defer</span> trx.Commit()
+
+     result := trx.Where(<span class="hljs-string">&quot;bucket_id = ? AND name = ?&quot;</span>, bucketID, name).Delete(Photo{})
+     <span class="hljs-keyword">if</span> err := result.Error; err != <span class="hljs-literal">nil</span> {
+         <span class="hljs-keyword">return</span> err
+     }
+     <span class="hljs-keyword">if</span> affected := result.RowsAffected; affected == <span class="hljs-number">0</span> {
+         <span class="hljs-keyword">return</span> NoSuchPhotoError
+     }
+     <span class="hljs-keyword">return</span> <span class="hljs-literal">nil</span>
+ }
+
+ <span class="hljs-comment">// Update a photo.</span>
+ <span class="hljs-keyword">func</span> UpdatePhoto(photoToUpdate *Photo) (*Photo, error) {
+     trx := db.Begin()
+     <span class="hljs-keyword">defer</span> trx.Commit()
+
+     photo := Photo{}
+     photo.ID = photoToUpdate.ID
+
+     result := trx.Model(&amp;photo).Updates(*photoToUpdate)
+     <span class="hljs-keyword">if</span> err := result.Error; err != <span class="hljs-literal">nil</span> {
+         log.Println(err)
+         <span class="hljs-keyword">return</span> &amp;photo, err
+     }
+     <span class="hljs-keyword">if</span> affected := result.RowsAffected; affected == <span class="hljs-number">0</span> {
+         <span class="hljs-keyword">return</span> &amp;photo, NoSuchPhotoError
+     }
+
+     <span class="hljs-keyword">return</span> &amp;photo, <span class="hljs-literal">nil</span>
+ }
+
+ <span class="hljs-comment">// Update the url for a photo.</span>
+ <span class="hljs-keyword">func</span> UpdatePhotoUrl(photoID <span class="hljs-keyword">uint</span>, url <span class="hljs-keyword">string</span>) error {
+     trx := db.Begin()
+     <span class="hljs-keyword">defer</span> trx.Commit()
+
+     photo := Photo{}
+     photo.ID = photoID
+     err := trx.Model(&amp;photo).Update(<span class="hljs-string">&quot;url&quot;</span>, url).Error
+     <span class="hljs-keyword">if</span> err != <span class="hljs-literal">nil</span> {
+         <span class="hljs-keyword">return</span> err
+     }
+     <span class="hljs-keyword">return</span> <span class="hljs-literal">nil</span>
+ }
+
+ <span class="hljs-comment">// Get a photo by its photo id.</span>
+ <span class="hljs-keyword">func</span> GetPhotoByID(photoID <span class="hljs-keyword">uint</span>) (*Photo, error) {
+     trx := db.Begin()
+     <span class="hljs-keyword">defer</span> trx.Commit()
+
+     photo := Photo{}
+     err := trx.Where(<span class="hljs-string">&quot;id = ?&quot;</span>, photoID).First(&amp;photo).Error
+     found := NoSuchPhotoError
+     <span class="hljs-keyword">if</span> err != <span class="hljs-literal">nil</span> || photo.ID == <span class="hljs-number">0</span> {
+         log.Println(err)
+         found = err
+     }
+     found = <span class="hljs-literal">nil</span>
+     <span class="hljs-keyword">return</span> &amp;photo, found
+ }
+
+ <span class="hljs-comment">// Get photos by bucket id.</span>
+ <span class="hljs-keyword">func</span> GetPhotoByBucketID(bucketID <span class="hljs-keyword">uint</span>, offset <span class="hljs-keyword">int</span>) ([]Photo, error) {
+     trx := db.Begin()
+     <span class="hljs-keyword">defer</span> trx.Commit()
+
+     photos := <span class="hljs-built_in">make</span>([]Photo, <span class="hljs-number">0</span>, constant.PAGE_SIZE)
+     err := trx.Where(<span class="hljs-string">&quot;bucket_id = ?&quot;</span>, bucketID).
+         Offset(offset).
+         Limit(constant.PAGE_SIZE).
+         Find(&amp;photos).
+         Error
+     <span class="hljs-keyword">if</span> err != <span class="hljs-literal">nil</span> {
+         <span class="hljs-keyword">return</span> photos, err
+     }
+     <span class="hljs-keyword">return</span> photos, <span class="hljs-literal">nil</span>
+ }
+</code></pre>
+<p> &#x8FD9;&#x91CC;&#x8981;&#x63D0;&#x51FA;&#x4E09;&#x4E2A;&#x95EE;&#x9898;&#xFF1A;</p>
+<ol>
+<li><strong>&#x26A0;&#xFE0F;<code>AddPhoto</code>&#x91CC;&#x7684;&#x903B;&#x8F91;&#x5E76;&#x672A;&#x5B8C;&#x5584;&#xFF0C;&#x73B0;&#x5728;&#x53EA;&#x662F;&#x5F80;&#x6570;&#x636E;&#x5E93;&#x52A0;&#x4E86;&#x4E00;&#x884C;&#x56FE;&#x7247;&#x8BB0;&#x5F55;&#xFF0C;&#x4F46;&#x662F;&#x8FD8;&#x672A;&#x628A;&#x56FE;&#x7247;&#x771F;&#x6B63;&#x5730;&#x5B58;&#x4E0B;&#x6765;&#xFF08;&#x4E0A;&#x4F20;&#x81F3;&#x4E91;&#x5B58;&#x50A8;&#xFF09;&#x3002;&#x5728;&#x4E0B;&#x4E00;&#x7BC7;&#x4F1A;&#x91CD;&#x70B9;&#x5B9E;&#x73B0;&#x8FD9;&#x4E2A;&#x9700;&#x6C42;&#x3002;</strong></li>
+<li>&#x8BFB;&#x8005;&#x4EEC;&#x5E94;&#x8BE5;&#x4E5F;&#x80FD;&#x53D1;&#x73B0;&#xFF0C;&#x5728;&#x6BCF;&#x4E2A;Model&#x7ED3;&#x6784;&#x4F53;&#x7684;&#x6BCF;&#x4E2A;&#x5B57;&#x6BB5;&#x540E;&#x9762;&#xFF0C;&#x90FD;&#x4F1A;&#x8DDF;&#x7740;&#x4E00;&#x4E32;&#x201C;&#x6807;&#x7B7E;&#x201D;&#xFF08;struct tag&#xFF09;&#xFF0C;&#x6807;&#x7B7E;&#x91CC;&#x9762;&#x6709;<code>json</code>&#xFF0C;&#x6709;<code>gorm</code>&#xFF0C;&#x6709;<code>form</code>&#x3002;&#x7B80;&#x5355;&#x6765;&#x8BF4;&#xFF0C;&#x6807;&#x7B7E;&#x5C31;&#x662F;&#x7528;&#x6765;&#x6807;&#x6CE8;&#x5B57;&#x6BB5;&#x7684;&#x201C;&#x522B;&#x540D;&#x201D;&#x6216;&#x8005;&#x6807;&#x6CE8;&#x5B57;&#x6BB5;&#x5C5E;&#x6027;&#x7684;&#x3002;<code>json</code>&#x6807;&#x7B7E;&#x5C31;&#x662F;&#x5728;JSON&#x5E8F;&#x5217;&#x5316;/&#x53CD;&#x5E8F;&#x5217;&#x5316;&#x8FC7;&#x7A0B;&#x4E2D;&#x7528;&#x7684;&#xFF0C;<code>gorm</code>&#x6807;&#x7B7E;&#x5C31;&#x662F;<code>gorm</code>&#x6846;&#x67B6;&#x4F7F;&#x7528;&#x7684;&#xFF0C;<code>form</code>&#x6807;&#x7B7E;&#x4E5F;&#x662F;<code>gorm</code>&#x6846;&#x67B6;&#x5728;&#x7ED1;&#x5B9A;&#x8BF7;&#x6C42;&#x53C2;&#x6570;&#x7684;&#x65F6;&#x5019;&#x7528;&#x7684;&#x3002;&#x901A;&#x5E38;&#xFF0C;&#x5B57;&#x6BB5;&#x7684;&#x6807;&#x7B7E;&#x4F1A;&#x5728;&#x53CD;&#x5C04;&#x4E2D;&#x5927;&#x91CF;&#x88AB;&#x7528;&#x5230;&#x3002;</li>
+<li>&#x5728;&#x5927;&#x9879;&#x76EE;&#x7684;&#x5F00;&#x53D1;&#x4E2D;&#xFF0C;&#x589E;/&#x5220;/&#x6539;/&#x67E5;&#x7684;&#x63A5;&#x53E3;&#x8FDC;&#x8FDC;&#x4E0D;&#x6B62;&#x8FD9;&#x4E48;&#x70B9;&#xFF0C;&#x6839;&#x636E;&#x4E1A;&#x52A1;&#x9700;&#x6C42;&#x8FD8;&#x53EF;&#x4EE5;&#x6709;&#x5F88;&#x591A;&#x9488;&#x5BF9;&#x7279;&#x5B9A;&#x6761;&#x4EF6;&#x7684;&#x589E;/&#x5220;/&#x6539;/&#x67E5;&#x63A5;&#x53E3;&#x3002;&#x5177;&#x4F53;&#x7684;&#x63A5;&#x53E3;&#x5B9E;&#x73B0;&#x8981;&#x548C;&#x4F60;&#x7684;&#x4E1A;&#x52A1;&#x4E0A;&#x4E0B;&#x6E38;&#x505A;&#x597D;&#x5BF9;&#x63A5;&#xFF0C;&#x4F8B;&#x5982;&#x641E;&#x6E05;&#x695A;&#x524D;&#x7AEF;&#x9700;&#x8981;&#x4EC0;&#x4E48;&#x6837;&#x7684;&#x6570;&#x636E;&#xFF0C;&#x6216;&#x8005;&#x641E;&#x6E05;&#x695A;&#x5728;&#x6574;&#x4E2A;pipeline&#x4E2D;&#x4F60;&#x7684;&#x4E1A;&#x52A1;&#x4E0B;&#x6E38;&#x9700;&#x8981;&#x4EC0;&#x4E48;&#x6837;&#x7684;&#x6570;&#x636E;&#x3002;</li>
+</ol>
+</li>
+</ol>
+<h2 id="&#x603B;&#x7ED3;">&#x603B;&#x7ED3;</h2>
+<p>&#x601D;&#x8003;&#x70B9;&#xFF1A;</p>
+<ul>
+<li><p>&#x5728;&#x591A;&#x4E2A;Add&#x548C;Update&#x7684;&#x63A5;&#x53E3;&#x4E2D;&#xFF0C;&#x5165;&#x53C2;&#x90FD;&#x662F;&#x6307;&#x9488;&#x7C7B;&#x578B;&#xFF0C;&#x800C;&#x4E0D;&#x662F;&#x5E38;&#x89C1;&#x7684;&#x503C;&#x7C7B;&#x578B;&#xFF0C;&#x4E3A;&#x4EC0;&#x4E48;&#xFF1F;</p>
+<ul>
+<li>&#x5173;&#x952E;&#x8BCD;&#xFF1A;Golang&#x6307;&#x9488;&#x3001;&#x503C;&#x590D;&#x5236;&#x3001;&#x8282;&#x7701;&#x5185;&#x5B58;</li>
+</ul>
+</li>
+<li><p>Golang&#x7684;&#x7ED3;&#x6784;&#x4F53;&#x6807;&#x7B7E;&#xFF08;struct tag&#xFF09;&#x600E;&#x4E48;&#x7528;&#xFF1F;</p>
+<ul>
+<li>&#x5173;&#x952E;&#x8BCD;&#xFF1A;struct tag&#x3001;&#x53CD;&#x5C04;</li>
+</ul>
+</li>
+<li><p>&#x5728;<code>bucket</code>&#x8868;&#x91CC;&#x5B9A;&#x4E49;&#x4E86;size&#x5C5E;&#x6027;&#xFF0C;&#x610F;&#x5473;&#x7740;&#x6BCF;&#x6B21;&#x6DFB;&#x52A0;&#x56FE;&#x7247;&#x90FD;&#x8981;&#x66F4;&#x65B0;bucket size&#x5B57;&#x6BB5;&#x3002;&#x5047;&#x5982;&#x628A;&#x573A;&#x666F;&#x6269;&#x5927;&#xFF0C;&#x4E0D;&#x5C40;&#x9650;&#x4E8E;bucket size&#xFF0C;&#x800C;&#x662F;&#x4E00;&#x4E2A;&#x4EC0;&#x4E48;size&#xFF0C;&#x5728;&#x9AD8;&#x5E76;&#x53D1;&#x4E0B;&#x9891;&#x7E41;&#x66F4;&#x65B0;MySQL&#x8868;&#x91CC;&#x7684;size&#x5B57;&#x6BB5;&#xFF0C;&#x6027;&#x80FD;&#x597D;&#x5417;&#xFF1F;&#x5982;&#x679C;&#x7528;&#x7F13;&#x5B58;&#x5B58;&#x4E00;&#x4E0B;&#xFF0C;&#x7136;&#x540E;&#x518D;&#x5F02;&#x6B65;&#x843D;&#x76D8;&#x5230;MySQL&#x53EF;&#x4EE5;&#x5417;&#xFF1F;&#x5F02;&#x6B65;&#x843D;&#x76D8;&#x53EF;&#x80FD;&#x5E26;&#x6765;&#x4EC0;&#x4E48;&#x95EE;&#x9898;&#xFF1F;</p>
+<ul>
+<li>&#x5173;&#x952E;&#x8BCD;&#xFF1A;&#x7F13;&#x5B58;&#x3001;&#x9AD8;&#x5E76;&#x53D1;&#x3001;&#x7F13;&#x5B58;&#x4E00;&#x81F4;&#x6027;</li>
+</ul>
+</li>
+<li><p>&#x7528;ORM&#x6846;&#x67B6;&#x6709;&#x4EC0;&#x4E48;&#x597D;&#x5904;&#xFF1F;ORM&#x6846;&#x67B6;&#x53EF;&#x80FD;&#x5E26;&#x6765;&#x4EC0;&#x4E48;&#x95EE;&#x9898;&#xFF1F;</p>
+</li>
+<li><p>&#x6570;&#x636E;&#x5E93;&#x8868;&#x4E3A;&#x4EC0;&#x4E48;&#x8981;&#x52A0;&#x7D22;&#x5F15;&#xFF1F;&#x7D22;&#x5F15;&#x7684;&#x539F;&#x7406;&#x662F;&#x4EC0;&#x4E48;&#xFF1F;</p>
+<ul>
+<li>&#x5173;&#x952E;&#x8BCD;&#xFF1A;InnoDB&#x7D22;&#x5F15;&#x3001;B+&#x6811;</li>
+</ul>
+</li>
+<li><p>&#x5173;&#x7CFB;&#x578B;&#x6570;&#x636E;&#x5E93;&#x662F;&#x4E0D;&#x662F;&#x4E07;&#x80FD;&#xFF1F;&#x5728;&#x4EC0;&#x4E48;&#x573A;&#x666F;&#x4E0B;&#x4E0D;&#x597D;&#x7528;&#xFF1F;</p>
+<ul>
+<li>&#x5173;&#x952E;&#x8BCD;&#xFF1A;&#x5168;&#x6587;&#x68C0;&#x7D22;&#x3001;&#x6A21;&#x7CCA;&#x641C;&#x7D22;&#x3001;OLAP</li>
+</ul>
+</li>
+<li><p>&#x4E3A;&#x4EC0;&#x4E48;&#x628A;&#x6570;&#x636E;&#x5E93;&#x8868;&#x5BF9;&#x5E94;&#x7684;&#x7ED3;&#x6784;&#x4F53;&#x53EB;&#x4F5C;<code>Model</code>&#xFF1F;</p>
+<ul>
+<li>&#x5173;&#x952E;&#x8BCD;&#xFF1A;MVC&#x6A21;&#x5F0F;</li>
+</ul>
+</li>
+<li><p>&#x4E3A;&#x4EC0;&#x4E48;&#x5728;&#x4E00;&#x4E9B;sql&#x67E5;&#x8BE2;&#x91CC;&#x8981;&#x52A0;&#x4E0A;<code>FOR UPDATE</code>&#xFF1F;</p>
+<ul>
+<li>&#x5173;&#x952E;&#x8BCD;&#xFF1A;InnoDB&#x9501;&#x673A;&#x5236;&#x3001;&#x5E76;&#x53D1;&#x5B89;&#x5168;&#x3001;&#x8BFB;&#x5199;&#x9501;</li>
+</ul>
+</li>
+<li><p>&#x4E3A;&#x4EC0;&#x4E48;&#x5728;&#x6240;&#x6709;&#x7684;&#x67E5;&#x8BE2;&#x91CC;&#xFF0C;&#x90FD;&#x542F;&#x52A8;&#x4E00;&#x4E2A;&#x4E8B;&#x52A1;&#xFF08;<code>trx := db.Begin()</code>&#xFF09;&#x6765;&#x6267;&#x884C;&#x64CD;&#x4F5C;&#xFF1F;&#x4E0D;&#x7528;&#x4E8B;&#x52A1;&#xFF0C;&#x76F4;&#x63A5;&#x67E5;&#x8BE2;&#x6709;&#x4EC0;&#x4E48;&#x95EE;&#x9898;&#x5417;&#xFF1F;</p>
+<ul>
+<li>&#x5173;&#x952E;&#x8BCD;&#xFF1A;&#x6570;&#x636E;&#x5E93;&#x4E8B;&#x52A1;&#xFF0C;ACID</li>
+</ul>
+</li>
+</ul>
+<blockquote>
+<p>&#x9879;&#x76EE;&#x5730;&#x5740;&#xFF1A;<a href="https://github.com/AcepcsMa/gin-photo-gallery-example" target="_blank">gin-photo-storage-example</a></p>
+</blockquote>
+
+                                
+                                </section>
+                            
+    </div>
+    <div class="search-results">
+        <div class="has-results">
+            
+            <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+            <ul class="search-results-list"></ul>
+            
+        </div>
+        <div class="no-results">
+            
+            <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+            
+        </div>
+    </div>
+</div>
+
+                        </div>
+                    </div>
+                
+            </div>
+
+            
+                
+                <a href="gin-tutorial-1.html" class="navigation navigation-prev " aria-label="Previous page: 1.结构及配置">
+                    <i class="fa fa-angle-left"></i>
+                </a>
+                
+                
+                <a href="gin-tutorial-3.html" class="navigation navigation-next " aria-label="Next page: 3.引入Redis">
+                    <i class="fa fa-angle-right"></i>
+                </a>
+                
+            
+        
+    </div>
+
+    <script>
+        var gitbook = gitbook || [];
+        gitbook.push(function() {
+            gitbook.page.hasChanged({"page":{"title":"2.数据库与Models实现","level":"1.4","depth":1,"next":{"title":"3.引入Redis","level":"1.5","depth":1,"path":"gin-tutorial-3.md","ref":"gin-tutorial-3.md","articles":[]},"previous":{"title":"1.结构及配置","level":"1.3","depth":1,"path":"gin-tutorial-1.md","ref":"gin-tutorial-1.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["livereload"],"pluginsConfig":{"livereload":{},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"gin-tutorial-2.md","mtime":"2019-03-23T06:06:35.944Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2019-03-23T20:59:01.166Z"},"basePath":".","book":{"language":""}});
+        });
+    </script>
+</div>
+
+        
+    <script src="gitbook/gitbook.js"></script>
+    <script src="gitbook/theme.js"></script>
+    
+        
+        <script src="gitbook/gitbook-plugin-livereload/plugin.js"></script>
+        
+    
+        
+        <script src="gitbook/gitbook-plugin-search/search-engine.js"></script>
+        
+    
+        
+        <script src="gitbook/gitbook-plugin-search/search.js"></script>
+        
+    
+        
+        <script src="gitbook/gitbook-plugin-lunr/lunr.min.js"></script>
+        
+    
+        
+        <script src="gitbook/gitbook-plugin-lunr/search-lunr.js"></script>
+        
+    
+        
+        <script src="gitbook/gitbook-plugin-sharing/buttons.js"></script>
+        
+    
+        
+        <script src="gitbook/gitbook-plugin-fontsettings/fontsettings.js"></script>
+        
+    
+
+    </body>
+</html>
+

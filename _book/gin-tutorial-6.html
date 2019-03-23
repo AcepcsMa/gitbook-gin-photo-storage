@@ -1,0 +1,778 @@
+
+<!DOCTYPE HTML>
+<html lang="" >
+    <head>
+        <meta charset="UTF-8">
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <title>6.集成Elasticsearch · GitBook</title>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="description" content="">
+        <meta name="generator" content="GitBook 3.2.3">
+        
+        
+        
+    
+    <link rel="stylesheet" href="gitbook/style.css">
+
+    
+            
+                
+                <link rel="stylesheet" href="gitbook/gitbook-plugin-highlight/website.css">
+                
+            
+                
+                <link rel="stylesheet" href="gitbook/gitbook-plugin-search/search.css">
+                
+            
+                
+                <link rel="stylesheet" href="gitbook/gitbook-plugin-fontsettings/website.css">
+                
+            
+        
+
+    
+
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+
+        
+    
+    
+    <meta name="HandheldFriendly" content="true"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="gitbook/images/apple-touch-icon-precomposed-152.png">
+    <link rel="shortcut icon" href="gitbook/images/favicon.ico" type="image/x-icon">
+
+    
+    <link rel="next" href="gin-tutorial-7.html" />
+    
+    
+    <link rel="prev" href="gin-tutorial-5.html" />
+    
+
+    </head>
+    <body>
+        
+<div class="book">
+    <div class="book-summary">
+        
+            
+<div id="book-search-input" role="search">
+    <input type="text" placeholder="Type to search" />
+</div>
+
+            
+                <nav role="navigation">
+                
+
+
+<ul class="summary">
+    
+    
+
+    
+
+    
+        
+        
+    
+        <li class="chapter " data-level="1.1" data-path="./">
+            
+                <a href="./">
+            
+                    
+                    Introduction
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2" data-path="introduction.html">
+            
+                <a href="introduction.html">
+            
+                    
+                    0.项目简介
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3" data-path="gin-tutorial-1.html">
+            
+                <a href="gin-tutorial-1.html">
+            
+                    
+                    1.结构及配置
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4" data-path="gin-tutorial-2.html">
+            
+                <a href="gin-tutorial-2.html">
+            
+                    
+                    2.数据库与Models实现
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5" data-path="gin-tutorial-3.html">
+            
+                <a href="gin-tutorial-3.html">
+            
+                    
+                    3.引入Redis
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6" data-path="gin-tutorial-4.html">
+            
+                <a href="gin-tutorial-4.html">
+            
+                    
+                    4.中间件与API开发-1
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7" data-path="gin-tutorial-5.html">
+            
+                <a href="gin-tutorial-5.html">
+            
+                    
+                    5.中间件与API开发-2
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter active" data-level="1.8" data-path="gin-tutorial-6.html">
+            
+                <a href="gin-tutorial-6.html">
+            
+                    
+                    6.集成Elasticsearch
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9" data-path="gin-tutorial-7.html">
+            
+                <a href="gin-tutorial-7.html">
+            
+                    
+                    7.第三方日志库——zap
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.10" data-path="gin-tutorial-8.html">
+            
+                <a href="gin-tutorial-8.html">
+            
+                    
+                    8.接入swagger
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.11" data-path="gin-tutorial-9.html">
+            
+                <a href="gin-tutorial-9.html">
+            
+                    
+                    9.https与nginx设置
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.12" data-path="gin-tutorial-10.html">
+            
+                <a href="gin-tutorial-10.html">
+            
+                    
+                    10.使用Docker部署
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.13" data-path="ending.html">
+            
+                <a href="ending.html">
+            
+                    
+                    11.Future work
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+
+    <li class="divider"></li>
+
+    <li>
+        <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
+            Published with GitBook
+        </a>
+    </li>
+</ul>
+
+
+                </nav>
+            
+        
+    </div>
+
+    <div class="book-body">
+        
+            <div class="body-inner">
+                
+                    
+
+<div class="book-header" role="navigation">
+    
+
+    <!-- Title -->
+    <h1>
+        <i class="fa fa-circle-o-notch fa-spin"></i>
+        <a href="." >6.集成Elasticsearch</a>
+    </h1>
+</div>
+
+
+
+
+                    <div class="page-wrapper" tabindex="-1" role="main">
+                        <div class="page-inner">
+                            
+<div id="book-search-results">
+    <div class="search-noresults">
+    
+                                <section class="normal markdown-section">
+                                
+                                <h2 id="overview">Overview</h2>
+<p>&#x5728;&#x4E0A;&#x4E00;&#x7BC7;&#x6559;&#x7A0B;<a href="https://marcoma.xyz/2019/03/07/gin-tutorial-5/" target="_blank">&#x300A;[Gin&#x6559;&#x7A0B;-5]&#x4E2D;&#x95F4;&#x4EF6;&#x4E0E;API&#x5F00;&#x53D1;-2&#x300B;</a>&#x91CC;&#x6211;&#x4EEC;&#x5DF2;&#x7ECF;&#x5F00;&#x53D1;&#x5B8C;&#x57FA;&#x672C;&#x7684;API&#xFF0C;&#x5E76;&#x5B9E;&#x73B0;&#x4E86;Router&#x548C;Server&#xFF0C;&#x6210;&#x529F;&#x628A;&#x670D;&#x52A1;&#x7AEF;&#x7A0B;&#x5E8F;&#x8DD1;&#x8D77;&#x6765;&#x4E86;&#x3002;&#x8FD9;&#x65F6;&#x5019;&#x6211;&#x4EEC;&#x5C31;&#x8981;&#x5BA1;&#x89C6;&#x4E00;&#x4E0B;&#xFF0C;&#x662F;&#x5426;&#x5FC5;&#x8981;&#x7684;API&#x771F;&#x7684;&#x90FD;&#x5168;&#x90E8;&#x5B9E;&#x73B0;&#x4E86;&#x5462;&#xFF1F;</p>
+<p>&#x5176;&#x5B9E;&#x4E0D;&#x7136;&#xFF0C;&#x8FD8;&#x8BB0;&#x5F97;&#x6211;&#x4EEC;&#x7684;Photo Model&#x91CC;&#x6709;<code>Tag</code>&#x548C;<code>Description</code>&#x4E24;&#x4E2A;&#x6587;&#x672C;&#x7C7B;&#x578B;&#x7684;&#x5B57;&#x6BB5;&#x3002;&#x5BF9;&#x4E8E;&#x6587;&#x672C;&#x6570;&#x636E;&#x6211;&#x4EEC;&#x80AF;&#x5B9A;&#x4F1A;&#x6709;&#x641C;&#x7D22;&#xFF08;&#x6A21;&#x7CCA;&#x641C;&#x7D22;&#xFF09;&#x7684;&#x9700;&#x6C42;&#xFF0C;&#x4F8B;&#x5982;&#x6211;&#x4EEC;&#x53EF;&#x80FD;&#x4F1A;&#x7ED9;&#x4E00;&#x5F20;&#x65C5;&#x6E38;&#x7684;&#x7167;&#x7247;&#x52A0;&#x4E0A;&#x67D0;&#x5E74;&#x67D0;&#x6708;&#x67D0;&#x65E5;&#x5728;&#x67D0;&#x5904;&#x505A;&#x4E86;&#x4EC0;&#x4E48;&#x7684;Description&#x6587;&#x672C;&#xFF0C;&#x5F53;&#x5B58;&#x50A8;&#x7684;&#x56FE;&#x7247;&#x8D8A;&#x6765;&#x8D8A;&#x591A;&#xFF0C;&#x6211;&#x4EEC;&#x5C31;&#x8981;&#x901A;&#x8FC7;&#x641C;&#x7D22;Description&#x6765;&#x627E;&#x51FA;&#x60F3;&#x8981;&#x7684;&#x56FE;&#x7247;&#x3002;</p>
+<p>&#x9762;&#x5BF9;&#x641C;&#x7D22;&#x7684;&#x9700;&#x6C42;&#xFF0C;&#x5176;&#x4E2D;&#x4E00;&#x79CD;&#x89E3;&#x51B3;&#x65B9;&#x6848;&#x662F;&#x5229;&#x7528;MySQL&#x4F5C;&#x6587;&#x672C;&#x641C;&#x7D22;&#xFF0C;&#x4F8B;&#x5982;<code>select ... from photo where description like &apos;%xxx%&apos;;</code>&#xFF0C;&#x4F46;&#x662F;&#x8FD9;&#x6837;&#x7684;&#x67E5;&#x8BE2;&#x6548;&#x7387;&#x786E;&#x5B9E;&#x4E0D;&#x9AD8;&#xFF0C;&#x800C;&#x4E14;&#x4E0D;&#x80FD;&#x5B9E;&#x73B0;&#x6A21;&#x7CCA;&#x641C;&#x7D22;&#x3002;<strong>&#x6240;&#x8C13;&#x7684;&#x4E0D;&#x80FD;&#x6A21;&#x7CCA;&#x641C;&#x7D22;&#xFF0C;&#x5C31;&#x662F;&#x53EA;&#x80FD;&#x7CBE;&#x51C6;&#x5339;&#x914D;&#xFF0C;&#x4E0D;&#x5B58;&#x5728;&#x5206;&#x8BCD;&#x3001;&#x7406;&#x89E3;&#x3001;transform&#x7684;&#x8FC7;&#x7A0B;&#x3002;</strong></p>
+<p>&#x4F8B;&#x5982;&#x67D0;&#x5F20;&#x7167;&#x7247;&#x7684;Description&#x662F;&#x201C;2019&#x5E74;3&#x6708;10&#x65E5;&#xFF0C;&#x6211;&#x4EEC;&#x56E2;&#x961F;&#x4E00;&#x8D77;&#x5728;&#x9EC4;&#x5C71;&#x7684;&#x7A7A;&#x5730;&#x4E0A;&#x73A9;&#x6251;&#x514B;&#x201D;&#xFF0C;&#x8FC7;&#x4E86;&#x5F88;&#x4E45;&#x4E4B;&#x540E;&#x7528;&#x6237;&#x5FD8;&#x4E86;&#x8BE5;&#x56FE;&#x7247;&#x7684;&#x5177;&#x4F53;Description&#x662F;&#x600E;&#x4E48;&#x5199;&#x7684;&#xFF0C;&#x53EA;&#x6A21;&#x7CCA;&#x5730;&#x8BB0;&#x5F97;&#x201C;&#x6253;&#x6251;&#x514B;&#x201D;&#xFF0C;&#x5F53;&#x4ED6;&#x641C;&#x7D22;&#x201C;&#x6253;&#x6251;&#x514B;&#x201D;&#xFF0C;&#x5BF9;&#x5E94;&#x7684;&#x67E5;&#x8BE2;&#x8BED;&#x53E5;&#x5C31;&#x662F;<code>select ...from photo where description like &apos;%&#x6253;&#x6251;&#x514B;%&apos;;</code>&#xFF0C;&#x7ED3;&#x679C;&#x4EC0;&#x4E48;&#x90FD;&#x6CA1;&#x67E5;&#x51FA;&#x6765;&#x3002;</p>
+<p>&#x57FA;&#x4E8E;&#x8FD9;&#x6837;&#x7684;&#x9700;&#x6C42;&#x548C;&#x95EE;&#x9898;&#xFF0C;&#x6211;&#x4EEC;&#x4E0D;&#x80FD;&#x7528;MySQL&#x5B9E;&#x73B0;&#x641C;&#x7D22;&#x529F;&#x80FD;&#xFF0C;&#x5E94;&#x8F6C;&#x800C;&#x4F7F;&#x7528;Elasticsearch&#x3002;</p>
+<p><strong>Note&#xFF1A;&#x672C;&#x6559;&#x7A0B;&#x4E0D;&#x5305;&#x542B;Elasticsearch&#x5B89;&#x88C5;&#x548C;&#x8FD0;&#x884C;&#x7684;&#x6B65;&#x9AA4;&#xFF0C;&#x8BF7;&#x81EA;&#x884C;&#x5B89;&#x88C5;&#x5E76;&#x786E;&#x4FDD;&#x6B63;&#x5E38;&#x8FD0;&#x884C;&#x3002;</strong></p>
+<h2 id="&#x4EC0;&#x4E48;&#x662F;elasticsearch">&#x4EC0;&#x4E48;&#x662F;Elasticsearch</h2>
+<p>&#x6839;&#x636E;<a href="https://www.elastic.co/products/elasticsearch" target="_blank">Elastic&#x5B98;&#x65B9;</a>&#x7684;&#x5B9A;&#x4E49;&#xFF1A;</p>
+<blockquote>
+<p>Elasticsearch is a distributed, RESTful search and analytics engine capable of solving a growing number of use cases. As the heart of the Elastic Stack, it centrally stores your data so you can discover the expected and uncover the unexpected.</p>
+</blockquote>
+<p>&#x7B80;&#x800C;&#x8A00;&#x4E4B;&#xFF0C;Elasticsearch&#x5C31;&#x662F;&#x4E00;&#x4E2A;&#x53EF;&#x4EE5;&#x5B58;&#x50A8;&#x6570;&#x636E;&#xFF0C;&#x5E76;&#x63D0;&#x4F9B;&#x641C;&#x7D22;&#x548C;&#x5206;&#x6790;&#x63A5;&#x53E3;&#x7684;&#x641C;&#x7D22;&#x5F15;&#x64CE;&#xFF08;&#x7EC4;&#x4EF6;&#xFF09;&#x3002;</p>
+<p>&#x65E2;&#x7136;Elasticsearch&#x91CC;&#x4E5F;&#x53EF;&#x4EE5;&#x5B58;&#x50A8;&#x6570;&#x636E;&#xFF0C;&#x6211;&#x4EEC;&#x5C31;&#x6765;&#x770B;&#x770B;&#x5B83;&#x548C;MySQL&#x5728;&#x6982;&#x5FF5;&#x4E0A;&#x7684;&#x76F8;&#x4F3C;&#x4E4B;&#x5904;&#xFF1A;</p>
+<ul>
+<li>index &#x2248; table</li>
+<li>document &#x2248; record</li>
+<li>field &#x2248; column</li>
+</ul>
+<p>&#x5728;&#x6982;&#x5FF5;&#x4E0A;&#xFF0C;MySQL&#x91CC;&#x7684;&#x4E00;&#x5F20;&#x8868;&#x7C7B;&#x4F3C;&#x4E8E;Elasticsearch&#x91CC;&#x7684;&#x4E00;&#x4E2A;index&#xFF0C;MySQL&#x8868;&#x91CC;&#x7684;&#x4E00;&#x884C;&#x8BB0;&#x5F55;&#x7C7B;&#x4F3C;&#x4E8E;Elasticsearch&#x91CC;&#x7684;&#x4E00;&#x4E2A;document&#xFF0C;MySQL record&#x91CC;&#x7684;&#x4E00;&#x4E2A;&#x5B57;&#x6BB5;&#x7C7B;&#x4F3C;&#x4E8E;Elasticsearch document&#x91CC;&#x7684;&#x4E00;&#x4E2A;&#x5B57;&#x6BB5;&#x3002;</p>
+<p><img src="https://blog-image-1253224514.cos.ap-guangzhou.myqcloud.com/gin-tutorial-es-structure.png" alt=""></p>
+<p>&#x5982;&#x4E0A;&#x56FE;&#x6240;&#x793A;&#xFF0C;&#x57FA;&#x4E8E;&#x5B58;&#x50A8;&#x597D;&#x7684;&#x6570;&#x636E;&#xFF0C;&#x6211;&#x4EEC;&#x53EF;&#x4EE5;&#x5BF9;&#x5B83;&#x4EEC;&#x8FDB;&#x884C;&#x641C;&#x7D22;&#x3002;&#x4E0D;&#x540C;&#x4E8E;MySQL&#x7684;&#x201C;&#x5339;&#x914D;&#x201D;&#xFF0C;Elasticsearch&#x652F;&#x6301;&#x7684;&#x662F;&#x771F;&#x6B63;&#x610F;&#x4E49;&#x4E0A;&#x7684;&#x201C;&#x641C;&#x7D22;&#x201D;&#x3002;&#x5B83;&#x4F1A;&#x5BF9;&#x4F60;&#x7684;query&#x8FDB;&#x884C;&#x5206;&#x8BCD;&#x3001;&#x7EC4;&#x5408;&#x3001;transform&#xFF0C;&#x518D;&#x53BB;&#x5339;&#x914D;&#x6570;&#x636E;&#x91CC;&#x7684;&#x5BF9;&#x5E94;&#x5B57;&#x6BB5;&#x7684;&#x503C;&#xFF0C;&#x4E0D;&#x662F;&#x7B80;&#x5355;&#x7684;&#x5339;&#x914D;&#x3002;</p>
+<p>&#x63A5;&#x4E0B;&#x6765;&#x7684;&#x6559;&#x7A0B;&#x91CC;&#x5C06;&#x4F7F;&#x7528;<code>Elasticsearch 6.6.1</code>&#x6765;&#x5B9E;&#x73B0;&#x641C;&#x7D22;&#x529F;&#x80FD;&#x3002;</p>
+<h2 id="&#x5B9E;&#x73B0;es-utils">&#x5B9E;&#x73B0;ES Utils</h2>
+<ul>
+<li>Golang &lt;= 1.10&#x4E14;&#x9879;&#x76EE;&#x4F4D;&#x4E8E;<code>$GOPATH/src/</code>&#x4E0B;&#x7684;&#xFF0C;&#x53EF;&#x76F4;&#x63A5;<code>go get -u github.com/elastic/go-elasticsearch</code></li>
+<li>&#x5426;&#x5219;&#x53EF;&#x7528;go mod&#x6765;&#x5B89;&#x88C5; </li>
+</ul>
+<p>&#x9996;&#x5148;&#x5728;<code>gin-photo-storage/conf/server.conf</code>&#x91CC;&#x52A0;&#x4E0A;ES&#x7684;&#x914D;&#x7F6E;&#x9879;&#xFF0C;<code>ES_HOST</code>&#x548C;<code>ES_PORT</code>&#x586B;&#x5165;&#x4F60;&#x81EA;&#x5DF1;&#x7684;ES&#x7684;host&#x548C;port&#xFF1A;</p>
+<pre><code>{
+    ......
+    &quot;ES_HOST&quot;: &quot;......&quot;,
+    &quot;ES_PORT&quot;: &quot;......&quot;,
+    &quot;ES_PHOTO_INDEX&quot;: &quot;photo&quot;
+    ......
+}
+</code></pre><p>&#x7136;&#x540E;&#x5728;<code>gin-photo-storage/constant/constant.go</code>&#x548C;<code>gin-photo-storage/constant/resp_code.go</code>&#x91CC;&#x52A0;&#x4E0A;&#x5BF9;&#x5E94;&#x7684;&#x5E38;&#x91CF;&#x548C;&#x8FD4;&#x56DE;&#x7801;&#xFF1A;</p>
+<p>&#x5E38;&#x91CF;&#x5B9A;&#x4E49;&#xFF1A;</p>
+<pre><code class="lang-golang"><span class="hljs-comment">// &#x5728;constant.go&#x91CC;&#x8865;&#x5145;</span>
+
+<span class="hljs-comment">// Elasticsearch constants</span>
+ES_HOST         = <span class="hljs-string">&quot;ES_HOST&quot;</span>
+ES_PORT         = <span class="hljs-string">&quot;ES_PORT&quot;</span>
+ES_PHOTO_INDEX     = <span class="hljs-string">&quot;ES_PHOTO_INDEX&quot;</span>
+SEARCH_BY_TAG    = <span class="hljs-string">&quot;tags&quot;</span>
+SEARCH_BY_DESC    = <span class="hljs-string">&quot;description&quot;</span>
+</code></pre>
+<p>&#x8FD4;&#x56DE;&#x7801;&#xFF1A;</p>
+<pre><code class="lang-golang"><span class="hljs-comment">// &#x5728;resp_code.go&#x91CC;&#x8865;&#x5145;</span>
+
+<span class="hljs-comment">// ......</span>
+PHOTO_SEARCH_BY_TAG_SUCCESS     = <span class="hljs-number">4009</span>
+PHOTO_SEARCH_BY_DESC_SUCCESS    = <span class="hljs-number">4010</span>
+<span class="hljs-comment">// ......</span>
+
+<span class="hljs-keyword">func</span> init() {
+    <span class="hljs-comment">// ......</span>
+    Message[PHOTO_SEARCH_BY_TAG_SUCCESS] = <span class="hljs-string">&quot;Photo search by tag success.&quot;</span>
+    Message[PHOTO_SEARCH_BY_DESC_SUCCESS] = <span class="hljs-string">&quot;Photo search by description success.&quot;</span>
+}
+</code></pre>
+<p>&#x63A5;&#x4E0B;&#x6765;&#x5728;<code>gin-photo-storage/models/</code>&#x4E0B;&#x65B0;&#x5EFA;<code>es.go</code>&#x4EE3;&#x7801;&#x6587;&#x4EF6;&#xFF1A;</p>
+<pre><code class="lang-golang"><span class="hljs-keyword">package</span> models
+
+<span class="hljs-keyword">import</span> (
+    <span class="hljs-string">&quot;bytes&quot;</span>
+    <span class="hljs-string">&quot;context&quot;</span>
+    <span class="hljs-string">&quot;encoding/json&quot;</span>
+    <span class="hljs-string">&quot;errors&quot;</span>
+    <span class="hljs-string">&quot;fmt&quot;</span>
+    <span class="hljs-string">&quot;gin-photo-storage/conf&quot;</span>
+    <span class="hljs-string">&quot;gin-photo-storage/constant&quot;</span>
+    <span class="hljs-string">&quot;github.com/elastic/go-elasticsearch&quot;</span>
+    <span class="hljs-string">&quot;github.com/elastic/go-elasticsearch/esapi&quot;</span>
+    <span class="hljs-string">&quot;log&quot;</span>
+    <span class="hljs-string">&quot;strings&quot;</span>
+)
+
+<span class="hljs-keyword">var</span> ESClient *elasticsearch.Client
+<span class="hljs-keyword">var</span> PhotoIndexingError = errors.New(<span class="hljs-string">&quot;photo indexing error&quot;</span>)
+<span class="hljs-keyword">var</span> PhotoSearchError = errors.New(<span class="hljs-string">&quot;photo search error&quot;</span>)
+<span class="hljs-keyword">var</span> PhotoUpdateError = errors.New(<span class="hljs-string">&quot;photo update error&quot;</span>)
+
+<span class="hljs-comment">// search request body</span>
+<span class="hljs-keyword">var</span> SearchRequest = <span class="hljs-string">`{
+    &quot;query&quot;: {
+        &quot;bool&quot;: {
+            &quot;must&quot;: [
+                {
+                    &quot;match&quot;: {
+                        &quot;%s&quot;: &quot;%s&quot;
+                    }
+                },
+                {
+                    &quot;term&quot;: {
+                        &quot;auth_id&quot;: %d
+                    }
+                }
+            ]
+        }
+    }
+}`</span>
+
+<span class="hljs-comment">// update request body</span>
+<span class="hljs-keyword">var</span> AddPhotoUrlRequest = <span class="hljs-string">`{
+    &quot;doc&quot;: {
+        &quot;url&quot;: &quot;%s&quot;
+    }
+}`</span>
+
+<span class="hljs-comment">// search type which indicates if we are searching by tag or by description</span>
+<span class="hljs-keyword">type</span> SearchType <span class="hljs-keyword">string</span>
+
+<span class="hljs-comment">// Photo struct used in elasticsearch.</span>
+<span class="hljs-keyword">type</span> PhotoToIndex <span class="hljs-keyword">struct</span> {
+    AuthID        <span class="hljs-keyword">uint</span>        <span class="hljs-string">`json:&quot;auth_id&quot;`</span>
+    BucketID    <span class="hljs-keyword">uint</span>        <span class="hljs-string">`json:&quot;bucket_id&quot;`</span>
+    ID             <span class="hljs-keyword">uint</span>        <span class="hljs-string">`json:&quot;id&quot;`</span>
+    Name         <span class="hljs-keyword">string</span>        <span class="hljs-string">`json:&quot;name&quot;`</span>
+    Tags         []<span class="hljs-keyword">string</span>    <span class="hljs-string">`json:&quot;tags&quot;`</span>
+    Url            <span class="hljs-keyword">string</span>        <span class="hljs-string">`json:&quot;url&quot;`</span>
+    Description <span class="hljs-keyword">string</span>        <span class="hljs-string">`json:&quot;description&quot;`</span>
+}
+
+<span class="hljs-comment">// Init elasticsearch client.</span>
+<span class="hljs-keyword">func</span> init() {
+
+    host := conf.ServerCfg.Get(constant.ES_HOST)
+    port := conf.ServerCfg.Get(constant.ES_PORT)
+    esCfg := elasticsearch.Config{
+        Addresses: []<span class="hljs-keyword">string</span>{
+            fmt.Sprintf(<span class="hljs-string">&quot;http://%s:%s&quot;</span>, host, port),
+        },
+    }
+    <span class="hljs-keyword">var</span> err error
+    ESClient, err = elasticsearch.NewClient(esCfg)
+    <span class="hljs-keyword">if</span> err != <span class="hljs-literal">nil</span> {
+        log.Fatalln(err)
+    }
+}
+
+<span class="hljs-comment">// Index a photo in elasticsearch.</span>
+<span class="hljs-keyword">func</span> IndexPhoto(photo *Photo) error {
+
+    <span class="hljs-comment">// the document we want to index</span>
+    photoToIndex := PhotoToIndex{
+        AuthID: photo.AuthID,
+        BucketID: photo.BucketID,
+        ID: photo.ID,
+        Name: photo.Name,
+        Tags: strings.Split(photo.Tag, <span class="hljs-string">&quot;;&quot;</span>),
+        Url: photo.Url,
+        Description: photo.Description,
+    }
+    body, _ := json.Marshal(&amp;photoToIndex)
+
+    <span class="hljs-comment">// set up index request</span>
+    request := esapi.IndexRequest{
+        Index: conf.ServerCfg.Get(constant.ES_PHOTO_INDEX),
+        DocumentID: fmt.Sprintf(<span class="hljs-string">&quot;%d&quot;</span>, photoToIndex.ID),
+        Body: bytes.NewReader(body),
+        Refresh: <span class="hljs-string">&quot;true&quot;</span>,
+    }
+
+    <span class="hljs-keyword">if</span> res, err := request.Do(context.Background(), ESClient); err == <span class="hljs-literal">nil</span> {
+        <span class="hljs-keyword">defer</span> res.Body.Close()
+        <span class="hljs-keyword">if</span> res.IsError() {
+            log.Println(<span class="hljs-string">&quot;Photo indexing error&quot;</span>)
+            <span class="hljs-keyword">return</span> PhotoIndexingError
+        }
+    } <span class="hljs-keyword">else</span> {
+        log.Println(err)
+        <span class="hljs-keyword">return</span> PhotoIndexingError
+    }
+    <span class="hljs-keyword">return</span> <span class="hljs-literal">nil</span>
+}
+
+<span class="hljs-comment">// Add the photo url in elasticsearch.</span>
+<span class="hljs-keyword">func</span> AddPhotoUrl(photoID <span class="hljs-keyword">uint</span>, url <span class="hljs-keyword">string</span>) error {
+    queryBody := fmt.Sprintf(AddPhotoUrlRequest, url)
+
+    res, err := ESClient.Update(
+        conf.ServerCfg.Get(constant.ES_PHOTO_INDEX),
+        fmt.Sprintf(<span class="hljs-string">&quot;%d&quot;</span>, photoID),
+        strings.NewReader(queryBody),
+        )
+
+    <span class="hljs-keyword">if</span> err != <span class="hljs-literal">nil</span> {
+        log.Println(err)
+        <span class="hljs-keyword">return</span> PhotoUpdateError
+    }
+
+    <span class="hljs-keyword">if</span> res.IsError() {
+        log.Println(PhotoUpdateError)
+        <span class="hljs-keyword">return</span> PhotoUpdateError
+    } <span class="hljs-keyword">else</span> {
+        <span class="hljs-keyword">defer</span> res.Body.Close()
+        resMap := <span class="hljs-built_in">make</span>(<span class="hljs-keyword">map</span>[<span class="hljs-keyword">string</span>]<span class="hljs-keyword">interface</span>{})
+        <span class="hljs-keyword">if</span> err := json.NewDecoder(res.Body).Decode(&amp;resMap); err != <span class="hljs-literal">nil</span> {
+            log.Println(err)
+            <span class="hljs-keyword">return</span> PhotoUpdateError
+        } <span class="hljs-keyword">else</span> {
+            <span class="hljs-keyword">if</span> fmt.Sprintf(<span class="hljs-string">&quot;%d&quot;</span>, resMap[<span class="hljs-string">&quot;updated&quot;</span>]) != <span class="hljs-string">&quot;0&quot;</span> {
+                <span class="hljs-keyword">return</span> <span class="hljs-literal">nil</span>    <span class="hljs-comment">// update success</span>
+            }
+        }
+    }
+    <span class="hljs-keyword">return</span> PhotoUpdateError
+}
+
+<span class="hljs-comment">// Search photo(s) by the given field</span>
+<span class="hljs-comment">// 1. searchType = SEARCH_BY_TAG, the field is a tag</span>
+<span class="hljs-comment">// 2. searchType = SEARCH_BY_DESC, the field is a description</span>
+<span class="hljs-keyword">func</span> SearchPhoto(field <span class="hljs-keyword">string</span>, authID <span class="hljs-keyword">uint</span>, offset <span class="hljs-keyword">int</span>, searchType SearchType) ([]PhotoToIndex, error) {
+    queryBody := fmt.Sprintf(SearchRequest, searchType, field, authID)
+    photos := <span class="hljs-built_in">make</span>([]PhotoToIndex, <span class="hljs-number">0</span>, constant.PAGE_SIZE)
+
+    res, err := ESClient.Search(
+        ESClient.Search.WithContext(context.Background()),
+        ESClient.Search.WithIndex(conf.ServerCfg.Get(constant.ES_PHOTO_INDEX)),
+        ESClient.Search.WithBody(strings.NewReader(queryBody)),
+        ESClient.Search.WithFrom(offset),
+        ESClient.Search.WithSize(constant.PAGE_SIZE),
+        )
+
+    <span class="hljs-keyword">if</span> err != <span class="hljs-literal">nil</span> {
+        log.Println(err)
+        <span class="hljs-keyword">return</span> photos, PhotoSearchError
+    }
+
+    <span class="hljs-keyword">if</span> res.IsError() {
+        log.Println(PhotoSearchError)
+        <span class="hljs-keyword">return</span> photos, PhotoSearchError
+    } <span class="hljs-keyword">else</span> {
+        <span class="hljs-keyword">defer</span> res.Body.Close()
+        resMap := <span class="hljs-built_in">make</span>(<span class="hljs-keyword">map</span>[<span class="hljs-keyword">string</span>]<span class="hljs-keyword">interface</span>{})
+        <span class="hljs-keyword">if</span> err := json.NewDecoder(res.Body).Decode(&amp;resMap); err != <span class="hljs-literal">nil</span> {
+            log.Println(err)
+            <span class="hljs-keyword">return</span> photos, PhotoSearchError
+        } <span class="hljs-keyword">else</span> {
+            <span class="hljs-comment">// for each hit in the response, we marshal the source into the photo object</span>
+            <span class="hljs-keyword">for</span> _, hit := <span class="hljs-keyword">range</span> resMap[<span class="hljs-string">&quot;hits&quot;</span>].(<span class="hljs-keyword">map</span>[<span class="hljs-keyword">string</span>]<span class="hljs-keyword">interface</span>{})[<span class="hljs-string">&quot;hits&quot;</span>].([]<span class="hljs-keyword">interface</span>{}) {
+                source, _ := json.Marshal(hit.(<span class="hljs-keyword">map</span>[<span class="hljs-keyword">string</span>]<span class="hljs-keyword">interface</span>{})[<span class="hljs-string">&quot;_source&quot;</span>])
+                photo := PhotoToIndex{}
+                json.Unmarshal(source, &amp;photo)
+                photos = <span class="hljs-built_in">append</span>(photos, photo)
+            }
+        }
+    }
+
+    <span class="hljs-keyword">return</span> photos, <span class="hljs-literal">nil</span>
+}
+</code></pre>
+<p>&#x5728;<code>es.go</code>&#x91CC;&#xFF0C;&#x4E3B;&#x8981;&#x5B9E;&#x73B0;&#x4E86;&#x4EE5;&#x4E0B;&#x51E0;&#x4E2A;&#x903B;&#x8F91;&#xFF1A;</p>
+<ul>
+<li>&#x8BFB;&#x53D6;&#x914D;&#x7F6E;&#x9879;&#xFF0C;&#x65B0;&#x5EFA;ES client</li>
+<li>index&#x56FE;&#x7247;</li>
+<li>&#x66F4;&#x65B0;&#x56FE;&#x7247;url</li>
+<li>&#x901A;&#x8FC7;tag&#x6216;&#x8005;description&#x6765;&#x641C;&#x7D22;&#x56FE;&#x7247;&#xFF08;&#x5B9A;&#x4E49;&#x4E86;SearchType&#xFF0C;&#x53D6;&#x503C;&#x8981;&#x4E48;&#x662F;tag&#x8981;&#x4E48;&#x662F;desc&#xFF09;</li>
+</ul>
+<p>&#x5176;&#x4E2D;&#x6D89;&#x53CA;&#x5230;&#x4E00;&#x4E9B;go client&#x7684;API&#x4F7F;&#x7528;&#xFF08;index&#x3001;search&#xFF09;&#x8FD8;&#x6709;&#x5BF9;ES&#x8FD4;&#x56DE;&#x7ED3;&#x679C;JSON&#x7684;&#x89E3;&#x6790;&#xFF0C;&#x5BF9;ES go client&#x6216;&#x8005;API&#x4F7F;&#x7528;&#x611F;&#x5174;&#x8DA3;&#x7684;&#x53EF;&#x53C2;&#x8003;&#x5B83;&#x4EEC;&#x7684;&#x9879;&#x76EE;&#x5730;&#x5740;&#xFF1A;<a href="https://github.com/elastic/go-elasticsearch" target="_blank">elastic/go-elasticsearch</a>&#x3002;</p>
+<h2 id="&#x6574;&#x5408;&#x5B9E;&#x73B0;&#x641C;&#x7D22;&#x529F;&#x80FD;">&#x6574;&#x5408;&#x5B9E;&#x73B0;&#x641C;&#x7D22;&#x529F;&#x80FD;</h2>
+<p>&#x5B9E;&#x73B0;&#x4E86;ES Utils&#x540E;&#xFF0C;&#x53EF;&#x4EE5;&#x628A;ES Utils&#x548C;&#x4E4B;&#x524D;&#x7684;&#x4EE3;&#x7801;&#x6574;&#x5408;&#x5230;&#x4E00;&#x8D77;&#x6765;&#x5B9E;&#x73B0;&#x641C;&#x7D22;&#x529F;&#x80FD;&#x3002;</p>
+<p>&#x9996;&#x5148;&#x5728;<code>AddPhoto()</code>&#x91CC;&#x52A0;&#x4E0A;index&#x56FE;&#x7247;&#x7684;&#x4EE3;&#x7801;&#xFF1A;</p>
+<pre><code class="lang-golang"><span class="hljs-comment">// &#x8865;&#x5145;models/photo.go</span>
+<span class="hljs-comment">// Add a new photo</span>
+<span class="hljs-keyword">func</span> AddPhoto(photoToAdd *Photo, photoFileHeader *multipart.FileHeader) (*Photo, <span class="hljs-keyword">string</span>, error) {
+    <span class="hljs-comment">// ......</span>
+
+    <span class="hljs-comment">// index a photo in elasticsearch</span>
+    <span class="hljs-keyword">if</span> err = IndexPhoto(&amp;photo); err != <span class="hljs-literal">nil</span> {
+        log.Println(err)
+        <span class="hljs-keyword">return</span> <span class="hljs-literal">nil</span>, <span class="hljs-string">&quot;&quot;</span>, err
+    }
+
+    <span class="hljs-comment">// ......</span>
+}
+</code></pre>
+<p>&#x7136;&#x540E;&#x5728;<code>UpdatePhoto()</code>&#x91CC;&#x52A0;&#x4E0A;&#x66F4;&#x65B0;ES&#x7684;&#x4EE3;&#x7801;&#xFF1A;</p>
+<pre><code class="lang-golang"><span class="hljs-comment">// &#x8865;&#x5145;models/photo.go</span>
+<span class="hljs-comment">// Update a photo.</span>
+<span class="hljs-keyword">func</span> UpdatePhoto(photoToUpdate *Photo) (*Photo, error) {
+    <span class="hljs-comment">// ......</span>
+
+    <span class="hljs-comment">// update elasticsearch</span>
+    updated := Photo{}
+    trx.Where(<span class="hljs-string">&quot;id = ?&quot;</span>, photoToUpdate.ID).First(&amp;updated)
+    <span class="hljs-keyword">if</span> err := IndexPhoto(&amp;updated); err != <span class="hljs-literal">nil</span> {
+        <span class="hljs-keyword">return</span> &amp;photo, err
+    }
+
+    <span class="hljs-keyword">return</span> &amp;updated, <span class="hljs-literal">nil</span>
+}
+</code></pre>
+<p>&#x6700;&#x540E;&#x5B9E;&#x73B0;&#x4E00;&#x4E2A;&#x56FE;&#x7247;&#x641C;&#x7D22;&#x7684;API&#xFF1A;</p>
+<pre><code class="lang-golang"><span class="hljs-comment">// &#x8865;&#x5145;apis/v1/photo.go</span>
+<span class="hljs-comment">// Search a photo (by tag / description)</span>
+<span class="hljs-keyword">func</span> SearchPhoto(context *gin.Context) {
+    responseCode := constant.INVALID_PARAMS
+    authID, err := strconv.Atoi(context.Query(<span class="hljs-string">&quot;auth_id&quot;</span>))
+    tag, tagExisted := context.GetQuery(<span class="hljs-string">&quot;tag&quot;</span>)
+    desc, descExisted := context.GetQuery(<span class="hljs-string">&quot;desc&quot;</span>)
+    <span class="hljs-keyword">if</span> err != <span class="hljs-literal">nil</span> || (tagExisted &amp;&amp; descExisted) || (!tagExisted &amp;&amp; !descExisted) {
+        context.AbortWithStatusJSON(http.StatusBadRequest, gin.H{
+            <span class="hljs-string">&quot;code&quot;</span>: responseCode,
+            <span class="hljs-string">&quot;data&quot;</span>: <span class="hljs-built_in">make</span>(<span class="hljs-keyword">map</span>[<span class="hljs-keyword">string</span>]<span class="hljs-keyword">string</span>),
+            <span class="hljs-string">&quot;msg&quot;</span>:  constant.GetMessage(responseCode),
+        })
+    }
+
+    <span class="hljs-keyword">var</span> searchType models.SearchType
+    <span class="hljs-keyword">var</span> field <span class="hljs-keyword">string</span>
+    <span class="hljs-keyword">if</span> tagExisted {
+        searchType = constant.SEARCH_BY_TAG
+        field = tag
+    } <span class="hljs-keyword">else</span> {
+        searchType = constant.SEARCH_BY_DESC
+        field = desc
+    }
+
+    validCheck := validation.Validation{}
+    validCheck.Min(authID, <span class="hljs-number">1</span>, <span class="hljs-string">&quot;auth_id&quot;</span>).Message(<span class="hljs-string">&quot;Auth id must be positive&quot;</span>)
+    validCheck.MinSize(field, <span class="hljs-number">1</span>, <span class="hljs-string">&quot;search_field&quot;</span>).Message(<span class="hljs-string">&quot;Search field can&apos;t be empty&quot;</span>)
+
+    data := <span class="hljs-built_in">make</span>(<span class="hljs-keyword">map</span>[<span class="hljs-keyword">string</span>]<span class="hljs-keyword">interface</span>{})
+    <span class="hljs-keyword">if</span> !validCheck.HasErrors() {
+        offset := context.GetInt(<span class="hljs-string">&quot;offset&quot;</span>)
+        <span class="hljs-keyword">if</span> photos, err := models.SearchPhoto(field, <span class="hljs-keyword">uint</span>(authID), offset, searchType); err == <span class="hljs-literal">nil</span> {
+            data[<span class="hljs-string">&quot;photos&quot;</span>] = photos
+            responseCode = constant.PHOTO_SEARCH_BY_TAG_SUCCESS
+        } <span class="hljs-keyword">else</span> {
+            responseCode = constant.INTERNAL_SERVER_ERROR
+        }
+    } <span class="hljs-keyword">else</span> {
+        <span class="hljs-keyword">for</span> _, err := <span class="hljs-keyword">range</span> validCheck.Errors {
+            log.Println(err)
+        }
+    }
+
+    context.JSON(http.StatusOK, gin.H{
+        <span class="hljs-string">&quot;code&quot;</span>: responseCode,
+        <span class="hljs-string">&quot;data&quot;</span>: data,
+        <span class="hljs-string">&quot;msg&quot;</span>: constant.GetMessage(responseCode),
+    })
+}
+</code></pre>
+<p><strong>Note&#xFF1A;&#x4E00;&#x4E2A;&#x641C;&#x7D22;API&#x53EF;&#x5206;&#x522B;&#x652F;&#x6301;&#x4E24;&#x79CD;&#x7C7B;&#x578B;&#x7684;&#x641C;&#x7D22;&#xFF0C;&#x4F46;&#x4E0D;&#x652F;&#x6301;&#x540C;&#x65F6;&#x6309;tag&#x548C;description&#x641C;&#x7D22;&#x3002;</strong></p>
+<p>&#x628A;&#x4E0A;&#x8FF0;&#x641C;&#x7D22;API&#x6DFB;&#x52A0;&#x5230;Router&#x89C4;&#x5219;&#x4E2D;&#xFF1A;</p>
+<pre><code class="lang-golang"><span class="hljs-comment">// &#x8865;&#x5145;routers/router.go</span>
+<span class="hljs-comment">// Init router, adding paths to it.</span>
+<span class="hljs-keyword">func</span> init() {
+    <span class="hljs-comment">// ......</span>
+
+    <span class="hljs-comment">// api group for v1</span>
+    v1Group := Router.Group(<span class="hljs-string">&quot;/api/v1&quot;</span>)
+    {
+        <span class="hljs-comment">// ......</span>
+
+        <span class="hljs-comment">// api group for photo</span>
+        photoGroup := v1Group.Group(<span class="hljs-string">&quot;/photo&quot;</span>)
+        {
+            <span class="hljs-comment">// ......</span>
+            photoGroup.GET(<span class="hljs-string">&quot;/search&quot;</span>, checkAuthMdw, refreshMdw, paginationMdw, v1.SearchPhoto)
+        }
+    }
+}
+</code></pre>
+<p>&#x540C;&#x4E4B;&#x524D;&#x7684;API&#xFF0C;&#x5728;&#x6267;&#x884C;<code>SearchPhoto()</code>&#x4E4B;&#x524D;&#xFF0C;&#x8981;&#x5148;&#x6267;&#x884C;auth&#x3001;refresh&#x3001;pagination&#x4E2D;&#x95F4;&#x4EF6;&#x3002;&#x542F;&#x52A8;Server&#xFF0C;&#x7528;Postman&#x8BBF;&#x95EE;&#x8BE5;API&#x8FDB;&#x884C;&#x641C;&#x7D22;&#x6D4B;&#x8BD5;&#x5373;&#x53EF;&#x3002;</p>
+<h2 id="&#x603B;&#x7ED3;">&#x603B;&#x7ED3;</h2>
+<ul>
+<li><p>Elasticsearch&#x548C;MySQL&#x90FD;&#x53EF;&#x4EE5;&#x5B58;&#x6570;&#x636E;&#xFF0C;&#x90FD;&#x53EF;&#x4EE5;&#x652F;&#x6301;&#x590D;&#x6742;&#x67E5;&#x8BE2;&#xFF0C;&#x5B83;&#x4EEC;&#x7684;&#x6838;&#x5FC3;&#x5DEE;&#x522B;&#x6709;&#x54EA;&#x4E9B;&#xFF1F;</p>
+<ul>
+<li>&#x5173;&#x952E;&#x8BCD;&#xFF1A;&#x641C;&#x7D22;&#x5F15;&#x64CE;&#x3001;&#x6570;&#x636E;&#x7ED3;&#x6784;&#x3001;&#x4E8B;&#x52A1;&#x3001;Lucene</li>
+</ul>
+</li>
+<li><p>&#x5728;&#x6559;&#x7A0B;&#x91CC;&#xFF0C;&#x6211;&#x4EEC;&#x63D0;&#x5230;&#x8981;&#x4E48;&#x624B;&#x5199;DSL&#x67E5;&#x8BE2;ES&#xFF0C;&#x8981;&#x4E48;&#x5229;&#x7528;&#x5404;&#x7F16;&#x7A0B;&#x8BED;&#x8A00;&#x7684;ES client&#x6765;&#x67E5;&#x8BE2;ES&#xFF0C;&#x90A3;&#x53EF;&#x4E0D;&#x53EF;&#x4EE5;&#x7528;SQL&#x6216;&#x8005;&#x7C7B;SQL&#x8BED;&#x53E5;&#x6765;&#x67E5;&#x8BE2;ES&#x5462;&#xFF1F;&#x5982;&#x679C;&#x8981;&#x4F60;&#x81EA;&#x5DF1;&#x5B9E;&#x73B0;&#xFF0C;&#x53EF;&#x4EE5;&#x600E;&#x4E48;&#x5B9E;&#x73B0;&#xFF1F;</p>
+<ul>
+<li>&#x5173;&#x952E;&#x8BCD;&#xFF1A;Elasticsearch SQL support&#x3001;SQL parser</li>
+</ul>
+</li>
+<li><p>MySQL InnoDB&#x91CC;&#x652F;&#x6301;&#x5168;&#x6587;&#x7D22;&#x5F15;&#xFF0C;&#x4F7F;&#x7528;&#x5168;&#x6587;&#x7D22;&#x5F15;&#x53EF;&#x4E0D;&#x53EF;&#x4EE5;&#x652F;&#x6301;&#x6211;&#x4EEC;&#x7684;&#x641C;&#x7D22;&#x9700;&#x6C42;&#xFF1F;</p>
+<ul>
+<li>&#x5173;&#x952E;&#x8BCD;&#xFF1A;&#x5168;&#x6587;&#x7D22;&#x5F15;&#x3001;InnoDB</li>
+</ul>
+</li>
+</ul>
+<blockquote>
+<p>&#x9879;&#x76EE;&#x5730;&#x5740;&#xFF1A;<a href="https://github.com/AcepcsMa/gin-photo-gallery-example" target="_blank">gin-photo-storage-example</a></p>
+</blockquote>
+
+                                
+                                </section>
+                            
+    </div>
+    <div class="search-results">
+        <div class="has-results">
+            
+            <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+            <ul class="search-results-list"></ul>
+            
+        </div>
+        <div class="no-results">
+            
+            <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+            
+        </div>
+    </div>
+</div>
+
+                        </div>
+                    </div>
+                
+            </div>
+
+            
+                
+                <a href="gin-tutorial-5.html" class="navigation navigation-prev " aria-label="Previous page: 5.中间件与API开发-2">
+                    <i class="fa fa-angle-left"></i>
+                </a>
+                
+                
+                <a href="gin-tutorial-7.html" class="navigation navigation-next " aria-label="Next page: 7.第三方日志库——zap">
+                    <i class="fa fa-angle-right"></i>
+                </a>
+                
+            
+        
+    </div>
+
+    <script>
+        var gitbook = gitbook || [];
+        gitbook.push(function() {
+            gitbook.page.hasChanged({"page":{"title":"6.集成Elasticsearch","level":"1.8","depth":1,"next":{"title":"7.第三方日志库——zap","level":"1.9","depth":1,"path":"gin-tutorial-7.md","ref":"gin-tutorial-7.md","articles":[]},"previous":{"title":"5.中间件与API开发-2","level":"1.7","depth":1,"path":"gin-tutorial-5.md","ref":"gin-tutorial-5.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["livereload"],"pluginsConfig":{"livereload":{},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"gin-tutorial-6.md","mtime":"2019-03-23T06:07:10.609Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2019-03-23T20:59:01.166Z"},"basePath":".","book":{"language":""}});
+        });
+    </script>
+</div>
+
+        
+    <script src="gitbook/gitbook.js"></script>
+    <script src="gitbook/theme.js"></script>
+    
+        
+        <script src="gitbook/gitbook-plugin-livereload/plugin.js"></script>
+        
+    
+        
+        <script src="gitbook/gitbook-plugin-search/search-engine.js"></script>
+        
+    
+        
+        <script src="gitbook/gitbook-plugin-search/search.js"></script>
+        
+    
+        
+        <script src="gitbook/gitbook-plugin-lunr/lunr.min.js"></script>
+        
+    
+        
+        <script src="gitbook/gitbook-plugin-lunr/search-lunr.js"></script>
+        
+    
+        
+        <script src="gitbook/gitbook-plugin-sharing/buttons.js"></script>
+        
+    
+        
+        <script src="gitbook/gitbook-plugin-fontsettings/fontsettings.js"></script>
+        
+    
+
+    </body>
+</html>
+

@@ -1,0 +1,710 @@
+
+<!DOCTYPE HTML>
+<html lang="" >
+    <head>
+        <meta charset="UTF-8">
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <title>1.结构及配置 · GitBook</title>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="description" content="">
+        <meta name="generator" content="GitBook 3.2.3">
+        
+        
+        
+    
+    <link rel="stylesheet" href="gitbook/style.css">
+
+    
+            
+                
+                <link rel="stylesheet" href="gitbook/gitbook-plugin-highlight/website.css">
+                
+            
+                
+                <link rel="stylesheet" href="gitbook/gitbook-plugin-search/search.css">
+                
+            
+                
+                <link rel="stylesheet" href="gitbook/gitbook-plugin-fontsettings/website.css">
+                
+            
+        
+
+    
+
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+
+        
+    
+    
+    <meta name="HandheldFriendly" content="true"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="gitbook/images/apple-touch-icon-precomposed-152.png">
+    <link rel="shortcut icon" href="gitbook/images/favicon.ico" type="image/x-icon">
+
+    
+    <link rel="next" href="gin-tutorial-2.html" />
+    
+    
+    <link rel="prev" href="introduction.html" />
+    
+
+    </head>
+    <body>
+        
+<div class="book">
+    <div class="book-summary">
+        
+            
+<div id="book-search-input" role="search">
+    <input type="text" placeholder="Type to search" />
+</div>
+
+            
+                <nav role="navigation">
+                
+
+
+<ul class="summary">
+    
+    
+
+    
+
+    
+        
+        
+    
+        <li class="chapter " data-level="1.1" data-path="./">
+            
+                <a href="./">
+            
+                    
+                    Introduction
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2" data-path="introduction.html">
+            
+                <a href="introduction.html">
+            
+                    
+                    0.项目简介
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter active" data-level="1.3" data-path="gin-tutorial-1.html">
+            
+                <a href="gin-tutorial-1.html">
+            
+                    
+                    1.结构及配置
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4" data-path="gin-tutorial-2.html">
+            
+                <a href="gin-tutorial-2.html">
+            
+                    
+                    2.数据库与Models实现
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5" data-path="gin-tutorial-3.html">
+            
+                <a href="gin-tutorial-3.html">
+            
+                    
+                    3.引入Redis
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6" data-path="gin-tutorial-4.html">
+            
+                <a href="gin-tutorial-4.html">
+            
+                    
+                    4.中间件与API开发-1
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7" data-path="gin-tutorial-5.html">
+            
+                <a href="gin-tutorial-5.html">
+            
+                    
+                    5.中间件与API开发-2
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8" data-path="gin-tutorial-6.html">
+            
+                <a href="gin-tutorial-6.html">
+            
+                    
+                    6.集成Elasticsearch
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9" data-path="gin-tutorial-7.html">
+            
+                <a href="gin-tutorial-7.html">
+            
+                    
+                    7.第三方日志库——zap
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.10" data-path="gin-tutorial-8.html">
+            
+                <a href="gin-tutorial-8.html">
+            
+                    
+                    8.接入swagger
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.11" data-path="gin-tutorial-9.html">
+            
+                <a href="gin-tutorial-9.html">
+            
+                    
+                    9.https与nginx设置
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.12" data-path="gin-tutorial-10.html">
+            
+                <a href="gin-tutorial-10.html">
+            
+                    
+                    10.使用Docker部署
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.13" data-path="ending.html">
+            
+                <a href="ending.html">
+            
+                    
+                    11.Future work
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+
+    <li class="divider"></li>
+
+    <li>
+        <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
+            Published with GitBook
+        </a>
+    </li>
+</ul>
+
+
+                </nav>
+            
+        
+    </div>
+
+    <div class="book-body">
+        
+            <div class="body-inner">
+                
+                    
+
+<div class="book-header" role="navigation">
+    
+
+    <!-- Title -->
+    <h1>
+        <i class="fa fa-circle-o-notch fa-spin"></i>
+        <a href="." >1.结构及配置</a>
+    </h1>
+</div>
+
+
+
+
+                    <div class="page-wrapper" tabindex="-1" role="main">
+                        <div class="page-inner">
+                            
+<div id="book-search-results">
+    <div class="search-noresults">
+    
+                                <section class="normal markdown-section">
+                                
+                                <h2 id="&#x9879;&#x76EE;&#x7ED3;&#x6784;">&#x9879;&#x76EE;&#x7ED3;&#x6784;</h2>
+<ul>
+<li><p>&#x65B0;&#x5EFA;&#x9879;&#x76EE;</p>
+<ul>
+<li>Golang&#x7248;&#x672C; &lt;= 1.10&#xFF0C;&#x5EFA;&#x8BAE;&#x76F4;&#x63A5;&#x628A;&#x9879;&#x76EE;&#x6839;&#x76EE;&#x5F55;&#x521B;&#x5728;<code>$GOPATH/src</code>&#x4E0B;</li>
+<li>Golang&#x7248;&#x672C; &gt;= 1.11&#xFF0C;&#x53EF;&#x4EE5;&#x653E;&#x5728;&#x672C;&#x5730;&#x4EFB;&#x610F;&#x4F4D;&#x7F6E;&#xFF0C;<strong>&#x7528;go mod&#x6765;&#x7BA1;&#x7406;&#x7B2C;&#x4E09;&#x65B9;package</strong></li>
+</ul>
+</li>
+<li><p>&#x76EE;&#x5F55;&#x7ED3;&#x6784;</p>
+<pre><code>  # Golang version &lt;= 1.10
+  $GOPATH
+  |&#x2014;&#x2014; src
+      |&#x2014;&#x2014; gin-photo-storage
+          |&#x2014;&#x2014; ...
+          |&#x2014;&#x2014; ...
+          |&#x2014;&#x2014; ...
+</code></pre><pre><code>  # Golang version &gt;= 1.11
+  Anywhere you like
+  |&#x2014;&#x2014; gin-photo-storage
+      |&#x2014;&#x2014; ...
+      |&#x2014;&#x2014; ...
+      |&#x2014;&#x2014; ...
+</code></pre><p>  &#x5BF9;go mod&#x611F;&#x5174;&#x8DA3;&#x7684;&#x53EF;&#x4EE5;&#x53BB;&#x641C;&#x7D22;Golang&#x4ECE;&#x4F4E;&#x7248;&#x672C;&#x5230;&#x9AD8;&#x7248;&#x672C;&#x4E00;&#x8DEF;&#x8D70;&#x6765;&#x5404;&#x79CD;package&#x7BA1;&#x7406;&#x7684;&#x65B9;&#x5F0F;&#x3002;</p>
+</li>
+</ul>
+<h2 id="&#x5982;&#x4F55;&#x52A0;&#x8F7D;&#x914D;&#x7F6E;&#x6587;&#x4EF6;">&#x5982;&#x4F55;&#x52A0;&#x8F7D;&#x914D;&#x7F6E;&#x6587;&#x4EF6;</h2>
+<p>&#x9996;&#x5148;&#x6765;&#x770B;&#x8FD9;&#x4E48;&#x51E0;&#x4E2A;&#x95EE;&#x9898;</p>
+<ul>
+<li><p>&#x4E00;&#x4E2A;&#x9879;&#x76EE;&#x91CC;&#x662F;&#x4E0D;&#x662F;&#x5F88;&#x591A;&#x5730;&#x65B9;&#x8981;&#x7528;&#x5230;&#x914D;&#x7F6E;&#x9879;&#xFF1F;</p>
+<p>  &#x901A;&#x5E38;&#x6765;&#x8BF4;&#xFF0C;&#x662F;&#x7684;&#x3002;&#x4E00;&#x822C;&#x9879;&#x76EE;&#x8D8A;&#x5927;&#xFF0C;&#x91CC;&#x9762;&#x6D89;&#x53CA;&#x7684;&#x7EC4;&#x4EF6;&#x8D8A;&#x591A;&#xFF08;&#x5173;&#x7CFB;&#x578B;&#x6570;&#x636E;&#x5E93;&#x3001;&#x5185;&#x5B58;&#x6570;&#x636E;&#x5E93;&#x3001;&#x6D88;&#x606F;&#x961F;&#x5217;......&#xFF09;&#xFF0C;&#x9700;&#x8981;&#x7684;&#x914D;&#x7F6E;&#x9879;&#x5C31;&#x8D8A;&#x591A;&#x3002;&#x4F60;&#x8981;&#x8FDE;&#x6570;&#x636E;&#x5E93;&#x603B;&#x5F97;&#x63D0;&#x4F9B;&#x6570;&#x636E;&#x5E93;&#x5730;&#x5740;&amp;&#x7528;&#x6237;&#x540D;&amp;&#x5BC6;&#x7801;......&#x4F60;&#x8981;&#x4ECE;&#x6D88;&#x606F;&#x961F;&#x5217;&#x6536;&#x53D1;&#x6D88;&#x606F;&#x603B;&#x5F97;&#x63D0;&#x4F9B;&#x5730;&#x5740;&amp;topic......&#x8FD9;&#x4E9B;&#x5168;&#x90FD;&#x662F;&#x201C;&#x914D;&#x7F6E;&#x9879;&#x201D;&#x3002;</p>
+</li>
+<li><p>&#x914D;&#x7F6E;&#x9879;&#x5168;&#x90E8;&#x5199;&#x5728;&#x4EE3;&#x7801;&#x6587;&#x4EF6;&#x91CC;&#x597D;&#x4E0D;&#x597D;&#xFF1F;</p>
+<p>  &#x65E2;&#x7136;&#x9879;&#x76EE;&#x91CC;&#x65E0;&#x5904;&#x4E0D;&#x5B58;&#x5728;&#x201C;&#x914D;&#x7F6E;&#x9879;&#x201D;&#xFF0C;&#x90A3;&#x5E72;&#x8106;&#x5728;&#x5199;&#x4E1A;&#x52A1;&#x4EE3;&#x7801;&#x7684;&#x65F6;&#x5019;&#x968F;&#x624B;&#x4E00;&#x5199;&#x5C31;&#x597D;&#x4E86;&#x3002;&#x4F46;&#x662F;&#x8FD9;&#x6837;&#x9EBB;&#x70E6;&#x5C31;&#x5927;&#x4E86;&#xFF0C;&#x5047;&#x5982;&#x5F00;&#x53D1;&#x524D;&#x671F;&#x7528;&#x7684;&#x662F;&#x5F00;&#x53D1;&#x73AF;&#x5883;&#x7684;&#x6570;&#x636E;&#x5E93;&#xFF0C;&#x5730;&#x5740;&#x662F;<code>aaa.bbb.ccc.ddd</code>&#xFF0C;&#x5230;&#x540E;&#x671F;&#x4E0A;&#x6D4B;&#x8BD5;&#x4E86;&#x8981;&#x6362;&#x6210;&#x6D4B;&#x8BD5;&#x73AF;&#x5883;&#x7684;&#x6570;&#x636E;&#x5E93;&#xFF0C;&#x5730;&#x5740;&#x662F;<code>xxx.yyy.zzz.kkk</code>&#xFF0C;&#x90A3;&#x5C31;&#x8981;&#x5927;&#x5E45;&#x4FEE;&#x6539;N&#x4E2A;&#x4EE3;&#x7801;&#x6587;&#x4EF6;&#xFF0C;&#x7136;&#x540E;&#x63D0;&#x4EA4;&#x91CD;&#x65B0;code review&#x3002;&#x7C7B;&#x4F3C;&#x7684;&#x60C5;&#x51B5;&#x8FDC;&#x8FDC;&#x4E0D;&#x6B62;&#x6570;&#x636E;&#x5E93;&#xFF0C;&#x53EF;&#x4EE5;&#x662F;&#x5404;&#x79CD;&#x5B58;&#x5728;&#x591A;&#x7248;&#x672C;&#x95EE;&#x9898;&#x7684;&#x914D;&#x7F6E;&#x9879;&#x3002;</p>
+</li>
+<li><p>&#x5982;&#x679C;&#x4E0D;&#x5199;&#x5728;&#x4EE3;&#x7801;&#x6587;&#x4EF6;&#x91CC;&#xFF0C;&#x5E94;&#x8BE5;&#x5199;&#x5230;&#x54EA;&#x91CC;&#xFF1F;</p>
+<p>  &#x5F88;&#x660E;&#x663E;&#xFF0C;&#x5982;&#x679C;&#x4E0D;&#x5199;&#x5728;&#x4EE3;&#x7801;&#x91CC;&#xFF08;&#x6240;&#x8C13;&#x7684;&#x201C;hard code&#x201D;&#xFF09;&#xFF0C;&#x90A3;&#x5C31;&#x53EA;&#x80FD;&#x5199;&#x5728;&#x989D;&#x5916;&#x7684;&#x201C;&#x975E;&#x4EE3;&#x7801;&#x201D;&#x6587;&#x4EF6;&#x91CC;&#xFF0C;&#x7136;&#x540E;&#x4F60;&#x7684;&#x4EE3;&#x7801;&#x903B;&#x8F91;&#x91CC;&#x6709;&#x8BFB;&#x914D;&#x7F6E;&#x6587;&#x4EF6;&#x7684;&#x64CD;&#x4F5C;&#x3002;&#x6BCF;&#x6B21;&#x8981;&#x6539;&#x914D;&#x7F6E;&#x9879;&#x7684;&#x503C;&#x65F6;&#xFF0C;&#x6539;&#x914D;&#x7F6E;&#x6587;&#x4EF6;&#x5373;&#x53EF;&#xFF0C;&#x4E0D;&#x9700;&#x8981;&#x518D;&#x6539;&#x4E00;&#x5927;&#x5806;&#x4EE3;&#x7801;&#x6587;&#x4EF6;&#x3002;&#x751A;&#x81F3;&#x53EF;&#x4EE5;&#x4E3A;&#x6D4B;&#x8BD5;&#x73AF;&#x5883;&#x5B9A;&#x4E49;&#x4E00;&#x4E2A;<code>config-test-env</code>&#x6587;&#x4EF6;&#xFF0C;&#x4E3A;&#x5F00;&#x53D1;&#x73AF;&#x5883;&#x5B9A;&#x4E49;&#x4E00;&#x4E2A;<code>config-dev-env</code>&#x6587;&#x4EF6;&#xFF0C;&#x4E3A;&#x4EFB;&#x610F;&#x73AF;&#x5883;&#x5B9A;&#x4E49;&#x5B83;&#x4E13;&#x5C5E;&#x7684;&#x914D;&#x7F6E;&#x6587;&#x4EF6;&#xFF0C;&#x5728;&#x7A0B;&#x5E8F;&#x542F;&#x52A8;&#x65F6;&#x901A;&#x8FC7;&#x547D;&#x4EE4;&#x884C;&#x53C2;&#x6570;&#x6307;&#x5B9A;&#x7528;&#x54EA;&#x5957;&#x73AF;&#x5883;&#xFF0C;&#x65B9;&#x4FBF;&#x5FEB;&#x6377;&#xFF0C;&#x65E0;&#x75DB;&#x5207;&#x6362;&#x3002;</p>
+</li>
+</ul>
+<p>&#x6240;&#x4EE5;&#xFF0C;&#x6574;&#x4E2A;&#x9879;&#x76EE;&#x7684;&#x7B2C;&#x4E00;&#x6B65;&#xFF0C;&#x6211;&#x4EEC;&#x8981;&#x65B0;&#x5EFA;&#x914D;&#x7F6E;&#x76EE;&#x5F55;<code>conf</code>&#x3001;&#x914D;&#x7F6E;&#x6587;&#x4EF6;&#xFF1A;<code>server.conf</code>&#x3001;&#x89E3;&#x6790;&#x914D;&#x7F6E;&#x6587;&#x4EF6;&#x7684;&#x4EE3;&#x7801;<code>cfg.go</code>&#x3002;</p>
+<pre><code>gin-photo-storage
+|&#x2014;&#x2014; conf
+     |&#x2014;&#x2014; server.conf
+     |&#x2014;&#x2014; cfg.go
+</code></pre><p>&#x5728;&#x672C;&#x9879;&#x76EE;&#x91CC;&#xFF0C;&#x76F4;&#x63A5;&#x628A;&#x914D;&#x7F6E;&#x9879;&#x5199;&#x6210;JSON&#x683C;&#x5F0F;&#xFF0C;&#x6613;&#x8BFB;&#x6613;&#x4FEE;&#x6539;&#x3002;&#x5F53;&#x7136;&#x4E5F;&#x53EF;&#x4EE5;&#x50CF;<code>EDDYCJY</code>&#x5728;<a href="https://github.com/EDDYCJY/blog/blob/master/golang/gin/2018-02-16-Gin%E5%AE%9E%E8%B7%B5-%E8%BF%9E%E8%BD%BD%E4%BA%8C-%E6%90%AD%E5%BB%BABlogAPIs-01.md" target="_blank">&#xFF08;Gin&#x642D;&#x5EFA;Blog API&apos;s &#xFF08;&#x4E00;&#xFF09;&#xFF09;</a>&#x91CC;&#x90A3;&#x6837;&#xFF0C;&#x7528;<code>ini</code>&#x4F5C;&#x914D;&#x7F6E;&#x6587;&#x4EF6;&#x7684;&#x683C;&#x5F0F;&#xFF0C;&#x7528;<code>ini</code>&#x5BF9;&#x5E94;&#x7684;package&#x6765;&#x89E3;&#x6790;&#xFF0C;&#x8FD9;&#x4E2A;&#x5012;&#x662F;&#x6CA1;&#x6709;&#x592A;&#x5927;&#x7684;&#x8BB2;&#x7A76;&#x3002;</p>
+<pre><code># &#x4EE5;&#x4E0B;&#x4E3A;server.conf&#x7684;&#x5185;&#x5BB9;
+{
+    &quot;JWT_SECRET&quot;: &quot;ufqw923dh1nlo9sa&quot;,
+    &quot;DB_TYPE&quot;: &quot;mysql&quot;,
+    &quot;DB_HOST&quot;: &quot;127.0.0.1&quot;,
+    &quot;DB_PORT&quot;: &quot;3306&quot;,
+    &quot;DB_USER&quot;: &quot;......&quot;,
+    &quot;DB_PWD&quot;: &quot;......&quot;,
+    &quot;DB_NAME&quot;: &quot;photo&quot;,
+    &quot;SERVER_PORT&quot;: &quot;9088&quot;
+}
+</code></pre><p>&#x521B;&#x5EFA;&#x597D;&#x914D;&#x7F6E;&#x6587;&#x4EF6;&#x540E;&#xFF0C;&#x53EF;&#x4EE5;&#x5F00;&#x59CB;&#x5199;&#x89E3;&#x6790;&#x914D;&#x7F6E;&#x6587;&#x4EF6;&#x7684;&#x4EE3;&#x7801;&#x4E86;&#x3002;&#x56E0;&#x4E3A;&#x8FD9;&#x91CC;&#x7528;&#x7684;JSON&#x683C;&#x5F0F;&#xFF0C;&#x6240;&#x4EE5;&#x4E0D;&#x9700;&#x8981;&#x5F15;&#x7528;&#x4EFB;&#x4F55;&#x7B2C;&#x4E09;&#x65B9;package&#xFF0C;Golang&#x539F;&#x751F;&#x81EA;&#x5E26;JSON&#x5E8F;&#x5217;&#x5316;&amp;&#x53CD;&#x5E8F;&#x5217;&#x5316;&#x7684;&#x5E93;&#x3002;</p>
+<pre><code class="lang-golang"><span class="hljs-comment">// &#x4EE5;&#x4E0B;&#x4E3A;cfg.go&#x7684;&#x4EE3;&#x7801;</span>
+<span class="hljs-keyword">package</span> conf
+
+<span class="hljs-keyword">import</span> (
+    <span class="hljs-string">&quot;encoding/json&quot;</span>
+    <span class="hljs-string">&quot;log&quot;</span>
+    <span class="hljs-string">&quot;os&quot;</span>
+)
+
+<span class="hljs-keyword">type</span> Cfg <span class="hljs-keyword">struct</span> {
+    ConfigMap <span class="hljs-keyword">map</span>[<span class="hljs-keyword">string</span>]<span class="hljs-keyword">string</span>
+}
+
+<span class="hljs-keyword">var</span> ServerCfg Cfg
+
+<span class="hljs-comment">// Init config from the local config file.</span>
+<span class="hljs-keyword">func</span> init() {
+    confFile, err := os.Open(<span class="hljs-string">&quot;conf/server.conf&quot;</span>)
+    <span class="hljs-keyword">defer</span> confFile.Close()
+    <span class="hljs-keyword">if</span> err != <span class="hljs-literal">nil</span> {
+        log.Fatalln(err)
+    }
+
+    ServerCfg.ConfigMap = <span class="hljs-built_in">make</span>(<span class="hljs-keyword">map</span>[<span class="hljs-keyword">string</span>]<span class="hljs-keyword">string</span>)
+    err = json.NewDecoder(confFile).Decode(&amp;ServerCfg.ConfigMap)
+    <span class="hljs-keyword">if</span> err != <span class="hljs-literal">nil</span> {
+        log.Fatalln(err)
+    }
+}
+
+<span class="hljs-comment">// Get the corresponding config value of the given key.</span>
+<span class="hljs-keyword">func</span> (cfg *Cfg) Get(key <span class="hljs-keyword">string</span>) <span class="hljs-keyword">string</span> {
+    <span class="hljs-keyword">if</span> val, ok := cfg.ConfigMap[key]; ok {
+        <span class="hljs-keyword">return</span> val
+    }
+    log.Fatalf(<span class="hljs-string">&quot;No such config term: %s!\n&quot;</span>, key)
+    <span class="hljs-keyword">return</span> <span class="hljs-string">&quot;&quot;</span>
+}
+</code></pre>
+<p>&#x53EF;&#x4EE5;&#x770B;&#x5230;&#xFF0C;&#x4EE3;&#x7801;&#x91CC;&#x7684;<code>init()</code>&#x5C31;&#x662F;&#x7528;&#x6765;&#x8BFB;&#x53D6;&#x540C;&#x4E2A;&#x6587;&#x4EF6;&#x5939;&#x4E0B;&#x7684;<code>server.conf</code>&#xFF0C;&#x7136;&#x540E;&#x7528;&#x539F;&#x751F;&#x7684;JSON&#x89E3;&#x6790;&#x5305;&#x5BF9;&#x5176;&#x5185;&#x5BB9;&#x8FDB;&#x884C;&#x89E3;&#x6790;&#x3002;&#x53E6;&#x5916;&#xFF0C;&#x4E3A;&#x4E86;&#x5728;&#x5176;&#x4ED6;&#x4EE3;&#x7801;&#x6A21;&#x5757;&#x4E2D;&#x65B9;&#x4FBF;&#x8BFB;&#x53D6;&#x914D;&#x7F6E;&#x503C;&#xFF0C;&#x6211;&#x4EEC;&#x5B9E;&#x73B0;&#x4E86;&#x4E00;&#x4E2A;<code>Get(key string)</code>&#x65B9;&#x6CD5;&#x3002;</p>
+<h2 id="&#x5E38;&#x91CF;&#x5B9A;&#x4E49;&#x2014;&#x2014;&#x907F;&#x514D;magic-number">&#x5E38;&#x91CF;&#x5B9A;&#x4E49;&#x2014;&#x2014;&#x907F;&#x514D;magic number</h2>
+<p>&#x9664;&#x4E86;&#x914D;&#x7F6E;&#x9879;&#xFF0C;&#x4EFB;&#x4F55;&#x9879;&#x76EE;&#x91CC;&#x4E0D;&#x53EF;&#x7F3A;&#x5C11;&#x7684;&#x8FD8;&#x6709;&#x5404;&#x79CD;&#x5E38;&#x91CF;&#x3002;&#x76F8;&#x6BD4;&#x914D;&#x7F6E;&#x9879;&#x7684;&#x201C;&#x52A8;&#x6001;&#x201D;&#x800C;&#x8A00;&#xFF0C;&#x5E38;&#x91CF;&#x4E00;&#x822C;&#x662F;&#x6307;&#x8DDF;&#x4EE3;&#x7801;&#x903B;&#x8F91;&#x7D27;&#x5BC6;&#x7ED3;&#x5408;&#x7684;&#x503C;&#xFF0C;&#x7EDD;&#x5927;&#x591A;&#x6570;&#x60C5;&#x51B5;&#x4E0B;&#x57FA;&#x672C;&#x4E0D;&#x4F1A;&#x56E0;&#x5916;&#x90E8;&#x5F00;&#x53D1;&#x73AF;&#x5883;&#x7684;&#x53D8;&#x5316;&#x800C;&#x53D8;&#x5316;&#x3002;&#x4E0D;&#x4F1A;&#x8BF4;&#x5207;&#x5230;&#x6D4B;&#x8BD5;&#x73AF;&#x5883;&#x5C31;&#x7528;&#x6D4B;&#x8BD5;&#x73AF;&#x5883;&#x7684;&#x4E00;&#x5957;&#xFF0C;&#x5207;&#x5230;&#x5F00;&#x53D1;&#x73AF;&#x5883;&#x5C31;&#x7528;&#x5F00;&#x53D1;&#x73AF;&#x5883;&#x7684;&#x4E00;&#x5957;&#x3002;</p>
+<p>&#x4F8B;&#x5982;&#xFF0C;&#x9488;&#x5BF9;&#x5BA2;&#x6237;&#x7AEF;&#x7684;&#x8BF7;&#x6C42;&#x6240;&#x56DE;&#x590D;&#x7684;&#x6570;&#x503C;&#x578B;&#x72B6;&#x6001;&#x7801;&#xFF08;<code>SUCCESS</code>&#x3001;<code>FAIL</code>&#x3001;<code>PENDING</code>&#x4E4B;&#x7C7B;&#x7684;&#xFF09;&#xFF0C;&#x6216;&#x8005;&#x662F;&#x4EE3;&#x7801;&#x91CC;&#x7684;&#x4E00;&#x4E9B;&#x5E38;&#x7528;&#x5B57;&#x7B26;&#x4E32;&#x3002;&#x8FD9;&#x6837;&#x7684;&#x503C;&#x6700;&#x597D;&#x8FD8;&#x662F;&#x5B9A;&#x4E49;&#x6210;&#x5E38;&#x91CF;&#xFF0C;&#x96C6;&#x4E2D;&#x5199;&#x5230;&#x4E00;&#x4E2A;&#x5177;&#x4F53;&#x7684;&#x5E38;&#x91CF;&#x4EE3;&#x7801;&#x6587;&#x4EF6;&#x91CC;&#x3002;&#x5426;&#x5219;&#x76F4;&#x63A5;&#x5728;N&#x4E2A;&#x4EE3;&#x7801;&#x6587;&#x4EF6;&#x91CC;&#x5927;&#x91CF;&#x4F7F;&#x7528;magic number&#x7684;&#x8BDD;&#xFF0C;&#x4E07;&#x4E00;&#x5230;&#x65F6;&#x8981;&#x6539;&#x5C31;&#x6BD4;&#x8F83;&#x9EBB;&#x70E6;&#x3002;</p>
+<p>&#x9996;&#x5148;&#x5728;&#x9879;&#x76EE;&#x8DEF;&#x5F84;&#x4E0B;&#x65B0;&#x5EFA;<code>constant</code>&#x76EE;&#x5F55;&#xFF0C;&#x7136;&#x540E;&#x5728;<code>constant</code>&#x8DEF;&#x5F84;&#x4E0B;&#x65B0;&#x5EFA;<code>constant.go</code>&#x548C;<code>resp_code.go</code>&#x3002;</p>
+<pre><code>gin-photo-storage
+|&#x2014;&#x2014; conf
+     |&#x2014;&#x2014; server.conf
+     |&#x2014;&#x2014; cfg.go
+|&#x2014;&#x2014; constant
+    |&#x2014;&#x2014; constant.go
+    |&#x2014;&#x2014; resp_code.go
+</code></pre><p>&#x5728;<code>constant.go</code>&#x91CC;&#xFF0C;&#x6211;&#x4EEC;&#x8981;&#x5B9A;&#x4E49;&#x4E00;&#x4E9B;&#x4EE3;&#x7801;&#x91CC;&#x7ECF;&#x5E38;&#x4F7F;&#x7528;&#x7684;&#x5B57;&#x7B26;&#x4E32;/&#x6574;&#x5F62;&#x5E38;&#x91CF;&#x3002;</p>
+<pre><code class="lang-golang"><span class="hljs-comment">// &#x4EE5;&#x4E0B;&#x4E3A;constant.go&#x7684;&#x5185;&#x5BB9;</span>
+<span class="hljs-keyword">package</span> constant
+
+<span class="hljs-keyword">const</span> (
+    <span class="hljs-comment">// JWT constants</span>
+    JWT_SECRET             = <span class="hljs-string">&quot;JWT_SECRET&quot;</span>
+    JWT                 = <span class="hljs-string">&quot;jwt&quot;</span>
+    JWT_EXP_MINUTE         = <span class="hljs-number">30</span>
+    PHOTO_STORAGE_ADMIN = <span class="hljs-string">&quot;admin&quot;</span>
+
+    <span class="hljs-comment">// Server constants</span>
+    SERVER_PORT = <span class="hljs-string">&quot;SERVER_PORT&quot;</span>
+    PAGE_SIZE     = <span class="hljs-number">20</span>
+
+    <span class="hljs-comment">// DB constants</span>
+    DB_CONNECT     = <span class="hljs-string">&quot;%s:%s@tcp(%s:%s)/%s?charset=utf8&amp;parseTime=True&amp;loc=Local&quot;</span>
+    DB_TYPE     = <span class="hljs-string">&quot;DB_TYPE&quot;</span>
+    DB_HOST     = <span class="hljs-string">&quot;DB_HOST&quot;</span>
+    DB_PORT     = <span class="hljs-string">&quot;DB_PORT&quot;</span>
+    DB_USER     = <span class="hljs-string">&quot;DB_USER&quot;</span>
+    DB_PWD         = <span class="hljs-string">&quot;DB_PWD&quot;</span>
+    DB_NAME     = <span class="hljs-string">&quot;DB_NAME&quot;</span>
+
+    <span class="hljs-comment">// Auth constants</span>
+    COOKIE_MAX_AGE     = <span class="hljs-number">1800</span>
+    LOGIN_MAX_AGE     = <span class="hljs-number">1800</span>
+    LOGIN_USER         = <span class="hljs-string">&quot;LOGIN_&quot;</span>
+)
+</code></pre>
+<p>&#x800C;&#x5728;<code>resp_code.go</code>&#x91CC;&#xFF0C;&#x6211;&#x4EEC;&#x8981;&#x5B9A;&#x4E49;&#x6240;&#x6709;API&#x7684;&#x8FD4;&#x56DE;&#x7801;&#xFF0C;&#x6BD5;&#x7ADF;&#x5BA2;&#x6237;&#x7AEF;&#x6536;&#x5230;&#x56DE;&#x590D;&#x540E;&#x57FA;&#x672C;&#x90FD;&#x8981;&#x4ECE;&#x8FD4;&#x56DE;&#x7801;&#x6765;&#x5224;&#x65AD;&#x670D;&#x52A1;&#x7AEF;&#x7684;&#x6267;&#x884C;&#x60C5;&#x51B5;&#x3002;</p>
+<pre><code class="lang-golang"><span class="hljs-comment">// &#x4EE5;&#x4E0B;&#x4E3A;resp_code.go&#x7684;&#x5185;&#x5BB9;</span>
+<span class="hljs-keyword">package</span> constant
+
+<span class="hljs-keyword">const</span> (
+    <span class="hljs-comment">// User related responses</span>
+    USER_ALREADY_EXIST         = <span class="hljs-number">1001</span>
+    USER_ADD_SUCCESS         = <span class="hljs-number">1002</span>
+    USER_AUTH_SUCCESS         = <span class="hljs-number">1003</span>
+    USER_AUTH_ERROR         = <span class="hljs-number">1004</span>
+    USER_AUTH_TIMEOUT         = <span class="hljs-number">1005</span>
+    USER_SIGNOUT_SUCCESS     = <span class="hljs-number">1006</span>
+
+    <span class="hljs-comment">// JWT related responses</span>
+    JWT_GENERATION_ERROR     = <span class="hljs-number">2001</span>
+    JWT_MISSING_ERROR         = <span class="hljs-number">2002</span>
+    JWT_PARSE_ERROR         = <span class="hljs-number">2003</span>
+
+    <span class="hljs-comment">// Bucket related responses</span>
+    BUCKET_ALREADY_EXIST     = <span class="hljs-number">3001</span>
+    BUCKET_ADD_SUCCESS         = <span class="hljs-number">3002</span>
+    BUCKET_NOT_EXIST         = <span class="hljs-number">3003</span>
+    BUCKET_DELETE_SUCCESS     = <span class="hljs-number">3004</span>
+    BUCKET_UPDATE_SUCCESS     = <span class="hljs-number">3005</span>
+    BUCKET_GET_SUCCESS         = <span class="hljs-number">3006</span>
+
+    <span class="hljs-comment">// Photo related responses</span>
+    PHOTO_ALREADY_EXIST     = <span class="hljs-number">4001</span>
+    PHOTO_ADD_IN_PROCESS     = <span class="hljs-number">4002</span>
+    PHOTO_UPLOAD_SUCCESS     = <span class="hljs-number">4003</span>
+    PHOTO_UPLOAD_ERROR         = <span class="hljs-number">4004</span>
+    PHOTO_NOT_EXIST         = <span class="hljs-number">4005</span>
+    PHOTO_DELETE_SUCCESS     = <span class="hljs-number">4006</span>
+    PHOTO_UPDATE_SUCCESS     = <span class="hljs-number">4007</span>
+    PHOTO_GET_SUCCESS         = <span class="hljs-number">4008</span>
+
+    <span class="hljs-comment">// Internal server responses</span>
+    INTERNAL_SERVER_ERROR     = <span class="hljs-number">5001</span>
+    PAGINATION_SUCCESS         = <span class="hljs-number">8001</span>
+    INVALID_PARAMS             = <span class="hljs-number">9001</span>
+)
+
+<span class="hljs-keyword">var</span> Message <span class="hljs-keyword">map</span>[<span class="hljs-keyword">int</span>]<span class="hljs-keyword">string</span>
+
+<span class="hljs-comment">// Init the message map.</span>
+<span class="hljs-keyword">func</span> init() {
+    Message = <span class="hljs-built_in">make</span>(<span class="hljs-keyword">map</span>[<span class="hljs-keyword">int</span>]<span class="hljs-keyword">string</span>)
+    Message[INVALID_PARAMS]         = <span class="hljs-string">&quot;Invalid parameters.&quot;</span>
+    Message[USER_ALREADY_EXIST]     = <span class="hljs-string">&quot;User already exists.&quot;</span>
+    Message[USER_ADD_SUCCESS]         = <span class="hljs-string">&quot;Add user success.&quot;</span>
+    Message[USER_AUTH_SUCCESS]         = <span class="hljs-string">&quot;User authentication success.&quot;</span>
+    Message[USER_AUTH_ERROR]         = <span class="hljs-string">&quot;User authentication fail.&quot;</span>
+    Message[USER_AUTH_TIMEOUT]         = <span class="hljs-string">&quot;User authentication timeout.&quot;</span>
+    Message[USER_SIGNOUT_SUCCESS]     = <span class="hljs-string">&quot;User sign out success.&quot;</span>
+    Message[JWT_GENERATION_ERROR]     = <span class="hljs-string">&quot;JWT generation fail.&quot;</span>
+    Message[JWT_MISSING_ERROR]         = <span class="hljs-string">&quot;JWT is missing.&quot;</span>
+    Message[INTERNAL_SERVER_ERROR]     = <span class="hljs-string">&quot;Internal server error.&quot;</span>
+    Message[BUCKET_ALREADY_EXIST]     = <span class="hljs-string">&quot;Bucket already exists.&quot;</span>
+    Message[BUCKET_ADD_SUCCESS]     = <span class="hljs-string">&quot;Add bucket success.&quot;</span>
+    Message[BUCKET_NOT_EXIST]        = <span class="hljs-string">&quot;Bucket does not exist.&quot;</span>
+    Message[BUCKET_DELETE_SUCCESS]     = <span class="hljs-string">&quot;Bucket delete success.&quot;</span>
+    Message[BUCKET_UPDATE_SUCCESS]     = <span class="hljs-string">&quot;Bucket update success.&quot;</span>
+    Message[BUCKET_GET_SUCCESS]     = <span class="hljs-string">&quot;Bucket get success.&quot;</span>
+    Message[PHOTO_ALREADY_EXIST]     = <span class="hljs-string">&quot;Photo already exists.&quot;</span>
+    Message[PHOTO_ADD_IN_PROCESS]     = <span class="hljs-string">&quot;Adding photo is in process.&quot;</span>
+    Message[PHOTO_UPLOAD_SUCCESS]     = <span class="hljs-string">&quot;Photo upload success.&quot;</span>
+    Message[PHOTO_UPLOAD_ERROR]     = <span class="hljs-string">&quot;Photo upload error.&quot;</span>
+    Message[PHOTO_NOT_EXIST]         = <span class="hljs-string">&quot;Photo does not exist.&quot;</span>
+    Message[PHOTO_DELETE_SUCCESS]     = <span class="hljs-string">&quot;Photo delete success.&quot;</span>
+    Message[PHOTO_GET_SUCCESS]        = <span class="hljs-string">&quot;Photo get success.&quot;</span>
+}
+
+<span class="hljs-comment">// Translate a response code to a detailed message.</span>
+<span class="hljs-keyword">func</span> GetMessage(code <span class="hljs-keyword">int</span>) <span class="hljs-keyword">string</span> {
+    msg, ok := Message[code]
+    <span class="hljs-keyword">if</span> ok {
+        <span class="hljs-keyword">return</span> msg
+    }
+    <span class="hljs-keyword">return</span> <span class="hljs-string">&quot;&quot;</span>
+}
+</code></pre>
+<p>&#x8FD9;&#x91CC;&#x8981;&#x6CE8;&#x610F;&#x7684;&#x662F;&#xFF0C;&#x6211;&#x4EEC;&#x4E0D;&#x4EC5;&#x5B9A;&#x4E49;&#x4E86;&#x8FD4;&#x56DE;&#x7801;&#xFF0C;&#x8FD8;&#x4E3A;&#x6BCF;&#x4E2A;&#x8FD4;&#x56DE;&#x7801;&#x5B9A;&#x4E49;&#x4E86;&#x5BF9;&#x5E94;&#x7684;&#x8BE6;&#x7EC6;&#x4FE1;&#x606F;&#x3002;&#x5F53;&#x7136;&#xFF0C;&#x4E0D;&#x5B9A;&#x4E49;&#x8BE6;&#x7EC6;&#x4FE1;&#x606F;&#x4E5F;&#x4E0D;&#x662F;&#x4E0D;&#x53EF;&#x4EE5;&#xFF0C;&#x4F46;&#x662F;&#x90A3;&#x6837;&#x7684;&#x8BDD;&#x5BF9;&#x5BA2;&#x6237;&#x7AEF;&#x7684;&#x53EF;&#x8BFB;&#x6027;&#x5C31;&#x5F88;&#x5DEE;&#xFF0C;&#x6BCF;&#x6B21;&#x60F3;&#x67E5;&#x67D0;&#x4E2A;&#x8FD4;&#x56DE;&#x7801;&#x5BF9;&#x5E94;&#x7684;&#x662F;&#x4EC0;&#x4E48;&#x4FE1;&#x606F;&#x65F6;&#x90FD;&#x5F97;&#x7FFB;&#x67E5;&#x6587;&#x6863;&#x3002;</p>
+<h2 id="jwt">JWT</h2>
+<p>&#x5B9A;&#x4E49;&#x5B8C;&#x914D;&#x7F6E;&#x6587;&#x4EF6;&amp;&#x5E38;&#x91CF;&#x540E;&#xFF0C;&#x6211;&#x4EEC;&#x6765;&#x5B9E;&#x73B0;&#x4E00;&#x4E0B;<code>JWT</code>&#x3002;<code>JWT = JSON Web Token</code>&#xFF0C;&#x662F;&#x7528;&#x6765;&#x505A;&#x9274;&#x6743;&#x7684;&#x4E00;&#x79CD;&#x624B;&#x6BB5;&#x3002;&#x6BD5;&#x7ADF;&#x6211;&#x4EEC;&#x8F9B;&#x8F9B;&#x82E6;&#x82E6;&#x5199;&#x597D;&#xFF0C;&#x90E8;&#x7F72;&#x597D;&#x7684;API&#x4E0D;&#x662F;&#x968F;&#x4FBF;&#x4E00;&#x4E2A;&#x4EBA;&#x90FD;&#x53EF;&#x4EE5;&#x4EFB;&#x610F;&#x8C03;&#x7528;&#x7684;&#xFF0C;&#x53EA;&#x6709;&#x901A;&#x8FC7;&#x9274;&#x6743;&#x7684;&#x8C03;&#x7528;&#x624D;&#x662F;&#x771F;&#x6B63;&#x7684;&#x5408;&#x6CD5;&#x8C03;&#x7528;&#x3002;&#x5173;&#x4E8E;<code>JWT</code>&#x7684;&#x8BE6;&#x7EC6;&#x89E3;&#x91CA;&#xFF0C;&#x53EF;&#x4EE5;&#x67E5;&#x770B;&#x6211;&#x4E4B;&#x524D;&#x7684;&#x4E00;&#x7BC7;&#x6587;&#x7AE0;<a href="https://marcoma.xyz/2019/01/27/jwt/" target="_blank">&#x300A;[Golang]JWT&#x53CA;&#x5176;Golang&#x5B9E;&#x73B0;&#x300B;</a>&#x3002;</p>
+<p>&#x56E0;&#x4E3A;<code>JWT</code>&#x8FD8;&#x4E0D;&#x7B97;&#x6211;&#x4EEC;&#x4E1A;&#x52A1;&#x903B;&#x8F91;&#x91CC;&#x7684;&#x6A21;&#x5757;&#xFF0C;&#x5C06;&#x5176;&#x770B;&#x4F5C;<code>utils</code>&#x5C31;&#x884C;&#xFF0C;&#x6240;&#x4EE5;&#x8981;&#x5728;&#x9879;&#x76EE;&#x8DEF;&#x5F84;&#x4E0B;&#x65B0;&#x5EFA;<code>utils</code>&#x76EE;&#x5F55;&#xFF0C;&#x5E76;&#x65B0;&#x5EFA;<code>jwt.go</code>&#x3002;</p>
+<pre><code>gin-photo-storage
+|&#x2014;&#x2014; conf
+     |&#x2014;&#x2014; server.conf
+     |&#x2014;&#x2014; cfg.go
+|&#x2014;&#x2014; constant
+    |&#x2014;&#x2014; constant.go
+    |&#x2014;&#x2014; resp_code.go
+|&#x2014;&#x2014; utils
+    |&#x2014;&#x2014; jwt.go
+</code></pre><p>&#x81F3;&#x4E8E;<code>JWT</code>&#x7684;&#x5177;&#x4F53;&#x5B9E;&#x73B0;&#xFF0C;&#x56E0;&#x4E3A;&#x5B83;&#x6D89;&#x53CA;&#x4E00;&#x4E9B;&#x6570;&#x5B57;&#x7B7E;&#x540D;&#x7684;&#x7B97;&#x6CD5;&#xFF0C;&#x9020;&#x8F6E;&#x5B50;&#x624B;&#x5199;&#x5927;&#x6982;&#x7387;&#x4E0D;&#x662F;&#x4E00;&#x4E2A;&#x597D;&#x7684;&#x9009;&#x62E9;&#xFF0C;&#x6240;&#x4EE5;&#x6211;&#x4EEC;&#x76F4;&#x63A5;&#x7528;&#x4E00;&#x4E2A;&#x7B2C;&#x4E09;&#x65B9;&#x7684;<code>JWT</code>&#x5E93;&#x2014;&#x2014;<code>github.com/dgrijalva/jwt-go</code>&#x6765;&#x5B9E;&#x73B0;&#x3002;</p>
+<ul>
+<li>Golang &lt;= 1.10&#x4E14;&#x9879;&#x76EE;&#x4F4D;&#x4E8E;<code>$GOPATH/src</code>&#x4E0B;&#x7684;&#x53EF;&#x4EE5;&#x76F4;&#x63A5;&#x7528;go get&#x6765;&#x5B89;&#x88C5;&#xFF1A;<code>go get -u github.com/dgrijalva/jwt-go</code></li>
+<li>Golang &gt;= 1.11&#x4E14;&#x4F7F;&#x7528;go mod&#x6765;&#x7BA1;&#x7406;package&#x7684;&#x53EF;&#x4EE5;&#x76F4;&#x63A5;&#x4FEE;&#x6539;<code>go.mod</code>&#x7136;&#x540E;<code>go mod init &lt;module-name&gt;</code></li>
+</ul>
+<pre><code class="lang-golang"><span class="hljs-comment">// &#x4EE5;&#x4E0B;&#x4E3A;jwt.go&#x7684;&#x5185;&#x5BB9;</span>
+<span class="hljs-keyword">package</span> utils
+
+<span class="hljs-keyword">import</span> (
+    <span class="hljs-string">&quot;gin-photo-storage/conf&quot;</span>
+    <span class="hljs-string">&quot;gin-photo-storage/constant&quot;</span>
+    <span class="hljs-string">&quot;github.com/dgrijalva/jwt-go&quot;</span>
+    <span class="hljs-string">&quot;log&quot;</span>
+    <span class="hljs-string">&quot;time&quot;</span>
+)
+
+<span class="hljs-comment">// self-defined user claim</span>
+<span class="hljs-keyword">type</span> UserClaim <span class="hljs-keyword">struct</span> {
+    UserName <span class="hljs-keyword">string</span> <span class="hljs-string">`json:&quot;user_name&quot;`</span>
+    jwt.StandardClaims
+}
+
+<span class="hljs-comment">// Generate a JWT based on the user name.</span>
+<span class="hljs-keyword">func</span> GenerateJWT(userName <span class="hljs-keyword">string</span>) (<span class="hljs-keyword">string</span>, error) {
+    <span class="hljs-comment">// define a user claim</span>
+    claim := UserClaim{
+        userName,
+        jwt.StandardClaims{
+            Issuer:    constant.PHOTO_STORAGE_ADMIN,
+            ExpiresAt: time.Now().Add(constant.JWT_EXP_MINUTE * time.Minute).Unix(),
+        },
+    }
+
+    <span class="hljs-comment">// generate the claim and the digital signature</span>
+    token := jwt.NewWithClaims(jwt.SigningMethodHS256, claim)
+    jwtString, err := token.SignedString([]<span class="hljs-keyword">byte</span>(conf.ServerCfg.Get(constant.JWT_SECRET)))
+    <span class="hljs-keyword">if</span> err != <span class="hljs-literal">nil</span> {
+        log.Fatalln(<span class="hljs-string">&quot;JWT generation error&quot;</span>)
+        <span class="hljs-keyword">return</span> <span class="hljs-string">&quot;&quot;</span>, err
+    }
+    <span class="hljs-keyword">return</span> jwtString, <span class="hljs-literal">nil</span>
+}
+
+<span class="hljs-comment">// Parse a JWT into a user claim.</span>
+<span class="hljs-keyword">func</span> ParseJWT(jwtString <span class="hljs-keyword">string</span>) (*UserClaim, error) {
+    token, err := jwt.ParseWithClaims(jwtString, &amp;UserClaim{}, <span class="hljs-keyword">func</span>(token *jwt.Token) (<span class="hljs-keyword">interface</span>{}, error) {
+        <span class="hljs-keyword">return</span> []<span class="hljs-keyword">byte</span>(conf.ServerCfg.Get(constant.JWT_SECRET)), <span class="hljs-literal">nil</span>
+    })
+
+    <span class="hljs-keyword">if</span> token != <span class="hljs-literal">nil</span> &amp;&amp; err == <span class="hljs-literal">nil</span> {
+        <span class="hljs-keyword">if</span> claim, ok := token.Claims.(*UserClaim); ok &amp;&amp; token.Valid {
+            <span class="hljs-keyword">return</span> claim, <span class="hljs-literal">nil</span>
+        }
+    }
+    <span class="hljs-keyword">return</span> <span class="hljs-literal">nil</span>, err
+}
+</code></pre>
+<p>&#x5B9E;&#x73B0;<code>JWT</code>&#x7684;&#x6838;&#x5FC3;&#x70B9;&#x6709;3&#x4E2A;&#xFF1A;</p>
+<ul>
+<li>&#x81EA;&#x5B9A;&#x4E49;&#x4E00;&#x4E2A;claim&#x7684;&#x7ED3;&#x6784;&#xFF0C;&#x5728;&#x8FD9;&#x91CC;&#x5C31;&#x662F;<code>UserClaim</code>&#xFF0C;&#x5176;&#x4E2D;&#x7B80;&#x5355;&#x5730;&#x5305;&#x542B;&#x4E00;&#x4E2A;&#x7528;&#x6237;&#x540D;&#x3002;</li>
+<li>&#x5B9E;&#x73B0;&#x751F;&#x6210;<code>JWT</code>&#x7684;&#x903B;&#x8F91;&#xFF0C;&#x4E5F;&#x5C31;&#x662F;&#x4F20;&#x5165;&#x81EA;&#x5B9A;&#x4E49;claim&#x7684;&#x5B57;&#x6BB5;&#xFF0C;&#x4E3A;&#x5176;&#x751F;&#x6210;&#x4E00;&#x4E2A;<code>JWT</code>&#x5B57;&#x7B26;&#x4E32;&#x3002;</li>
+<li>&#x5B9E;&#x73B0;&#x89E3;&#x6790;<code>JWT</code>&#x7684;&#x903B;&#x8F91;&#xFF0C;&#x4E5F;&#x5C31;&#x662F;&#x4F20;&#x5165;&#x4E00;&#x4E2A;<code>JWT</code>&#x5B57;&#x7B26;&#x4E32;&#xFF0C;&#x53CD;&#x751F;&#x6210;&#x51FA;&#x4E00;&#x4E2A;&#x81EA;&#x5B9A;&#x4E49;&#x7684;claim&#x3002;</li>
+</ul>
+<h2 id="&#x603B;&#x7ED3;">&#x603B;&#x7ED3;</h2>
+<p>&#x53D1;&#x6563;&#x601D;&#x8003;&#xFF1A;</p>
+<ul>
+<li><p>&#x914D;&#x7F6E;&#x6587;&#x4EF6;<code>server.conf</code>&#x653E;&#x5728;<code>conf</code>&#x6587;&#x4EF6;&#x5939;&#x91CC;&#xFF0C;&#x5F80;git&#x4ED3;&#x5E93;&#x4E0A;&#x63D0;&#x4EA4;&#x4EE3;&#x7801;&#x65F6;&#xFF0C;&#x5E94;&#x4E0D;&#x5E94;&#x8BE5;&#x628A;&#x914D;&#x7F6E;&#x6587;&#x4EF6;&#x4E5F;&#x63D0;&#x4EA4;&#x4E0A;&#x53BB;&#xFF1F;&#x5982;&#x679C;&#x4E0D;&#x5E94;&#x8BE5;&#x63D0;&#x4EA4;&#xFF0C;&#x8981;&#x600E;&#x4E48;&#x8BBE;&#x7F6E;&#xFF1F;</p>
+<ul>
+<li>&#x5173;&#x952E;&#x8BCD;&#xFF1A;git&#x547D;&#x4EE4;&#x3001;git ignore</li>
+</ul>
+</li>
+<li><p>&#x8DDF;hard code&#x5728;&#x4EE3;&#x7801;&#x91CC;&#x76F8;&#x6BD4;&#xFF0C;&#x914D;&#x7F6E;&#x6587;&#x4EF6;&#x5DF2;&#x7ECF;&#x7075;&#x6D3B;&#x4E86;&#x65E0;&#x6570;&#x500D;&#xFF0C;&#x4F46;&#x8FD8;&#x6709;&#x6CA1;&#x6709;&#x66F4;&#x597D;&#x7684;&#x65B9;&#x6848;&#x6765;&#x5B58;&#x50A8;&amp;&#x8BFB;&#x53D6;&#x914D;&#x7F6E;&#xFF1F;&#x5047;&#x5982;&#x60F3;&#x52A8;&#x6001;&#x66F4;&#x65B0;&#x914D;&#x7F6E;&#x503C;&#xFF0C;&#x4E0D;&#x7528;&#x91CD;&#x542F;&#x7A0B;&#x5E8F;&#x5C31;&#x80FD;&#x8BFB;&#x53D6;&#x5230;&#x6700;&#x65B0;&#x7684;&#x4FEE;&#x6539;&#x503C;&#xFF0C;&#x8981;&#x600E;&#x4E48;&#x505A;&#xFF1F;</p>
+<ul>
+<li>&#x5173;&#x952E;&#x8BCD;&#xFF1A;&#x914D;&#x7F6E;&#x4E2D;&#x5FC3;&#x3001;&#x70ED;&#x66F4;&#x65B0;</li>
+</ul>
+</li>
+<li><p><code>JWT</code>&#x6709;&#x4EC0;&#x4E48;&#x529F;&#x80FD;&#x4E0A;&#x7684;&#x7F3A;&#x70B9;&#xFF1F;&#x6709;&#x6CA1;&#x6709;&#x522B;&#x7684;&#x9274;&#x6743;&#x673A;&#x5236;&#x53EF;&#x4EE5;&#x514B;&#x670D;<code>JWT</code>&#x7684;&#x7F3A;&#x70B9;&#xFF1F;&#x591A;&#x79CD;&#x9274;&#x6743;&#x65B9;&#x5F0F;&#x4E92;&#x76F8;&#x5BF9;&#x6BD4;&#x5404;&#x6709;&#x4EC0;&#x4E48;&#x4F18;&#x52A3;&#xFF1F;</p>
+<ul>
+<li>&#x5173;&#x952E;&#x8BCD;&#xFF1A;<code>Cookie-Session</code>&#x3001;&#x4E3B;&#x52A8;&#x8FC7;&#x671F;&#x3001;&#x5355;&#x70B9;&#x767B;&#x5F55;</li>
+</ul>
+</li>
+<li><p>&#x7528;<code>JWT</code>&#x7684;&#x5B89;&#x5168;&#x6027;&#x5982;&#x4F55;&#xFF1F;&#x5E38;&#x89C1;&#x7684;web&#x653B;&#x51FB;&#x624B;&#x6BB5;&#x80FD;&#x4E0D;&#x80FD;&#x653B;&#x7834;<code>JWT</code>&#xFF1F;</p>
+<ul>
+<li>&#x5173;&#x952E;&#x8BCD;&#xFF1A;<code>CSRF</code>&#x3001;<code>XSS</code></li>
+</ul>
+</li>
+</ul>
+<blockquote>
+<p>&#x9879;&#x76EE;&#x5730;&#x5740;&#xFF1A;<a href="https://github.com/AcepcsMa/gin-photo-gallery-example" target="_blank">gin-photo-storage-example</a></p>
+</blockquote>
+
+                                
+                                </section>
+                            
+    </div>
+    <div class="search-results">
+        <div class="has-results">
+            
+            <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+            <ul class="search-results-list"></ul>
+            
+        </div>
+        <div class="no-results">
+            
+            <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+            
+        </div>
+    </div>
+</div>
+
+                        </div>
+                    </div>
+                
+            </div>
+
+            
+                
+                <a href="introduction.html" class="navigation navigation-prev " aria-label="Previous page: 0.项目简介">
+                    <i class="fa fa-angle-left"></i>
+                </a>
+                
+                
+                <a href="gin-tutorial-2.html" class="navigation navigation-next " aria-label="Next page: 2.数据库与Models实现">
+                    <i class="fa fa-angle-right"></i>
+                </a>
+                
+            
+        
+    </div>
+
+    <script>
+        var gitbook = gitbook || [];
+        gitbook.push(function() {
+            gitbook.page.hasChanged({"page":{"title":"1.结构及配置","level":"1.3","depth":1,"next":{"title":"2.数据库与Models实现","level":"1.4","depth":1,"path":"gin-tutorial-2.md","ref":"gin-tutorial-2.md","articles":[]},"previous":{"title":"0.项目简介","level":"1.2","depth":1,"path":"introduction.md","ref":"introduction.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["livereload"],"pluginsConfig":{"livereload":{},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"gin-tutorial-1.md","mtime":"2019-03-23T06:10:18.935Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2019-03-23T20:59:01.166Z"},"basePath":".","book":{"language":""}});
+        });
+    </script>
+</div>
+
+        
+    <script src="gitbook/gitbook.js"></script>
+    <script src="gitbook/theme.js"></script>
+    
+        
+        <script src="gitbook/gitbook-plugin-livereload/plugin.js"></script>
+        
+    
+        
+        <script src="gitbook/gitbook-plugin-search/search-engine.js"></script>
+        
+    
+        
+        <script src="gitbook/gitbook-plugin-search/search.js"></script>
+        
+    
+        
+        <script src="gitbook/gitbook-plugin-lunr/lunr.min.js"></script>
+        
+    
+        
+        <script src="gitbook/gitbook-plugin-lunr/search-lunr.js"></script>
+        
+    
+        
+        <script src="gitbook/gitbook-plugin-sharing/buttons.js"></script>
+        
+    
+        
+        <script src="gitbook/gitbook-plugin-fontsettings/fontsettings.js"></script>
+        
+    
+
+    </body>
+</html>
+
